@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ApiTest</title>
+<link rel="stylesheet" type="text/css"
+	href="stylesheets/bootstrap/easyui.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/icon.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/api.css">
+<script type="text/javascript" src="javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="javascripts/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="javascripts/vkbeautify.js"></script>
+<script type="text/javascript" src="javascripts/xml2json.js"></script>
+<script type="text/javascript" src="javascripts/jquery.coolfieldset.js"></script>
+<script type="text/javascript" src="api.js"></script>
+
+<style type="text/css">
+.tt-inner {
+	display: inline-block;
+	line-height: 12px;
+	padding-top: 5px;
+}
+
+.tt-inner img {
+	border: 0;
+	line-height: 12px;
+}
+</style>
+
+
+</head>
+<body class="easyui-layout" onload='init()'>
+
+	<div data-options="region:'center',border:false">
+		<div id='tt' class="easyui-tabs"
+			data-options="tabWidth:130,tabHeight:60,fit:true,border:false">
+
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/gear2.jpg'/&gt;&lt;br&gt;App Server&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 345px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'center',title:'Call Direction Actions',collapsible:false,split:false">
+								<div class="easyui-accordion"
+									data-options="multiple:true,fit:false">
+									<div class="calledNumberActions" title="CalledNumber"
+										style="padding: 10px;">
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="endCallRadio" type="radio"
+											name="cdAction1">End Call</label><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="routeRadio" type="radio" name="cdAction1"">Route</label>
+										<input onchange="actionChange()" class="routeText" type="text"
+											style="width: 235px;"><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="continueRadio" type="radio" name="cdAction1" checked>Continue</label><br />
+										<fieldset style="border: 0px;">
+											<label><input onchange="actionChange()"
+												class="playAnnouncementCheck" type="checkbox">Play
+												Announcement</label><br /> <label><input
+												onchange="actionChange()" class="collectDigitCheck"
+												type="checkbox">Collect Digit</label><br />
+										</fieldset>
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="deferredCheck"
+											type="checkbox">Deferred Response</label><br />
+									</div>
+									<div class="busyActions" title="Busy" style="padding: 10px;">
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="endCallRadio" type="radio"
+											name="cdAction2">End Call</label><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="routeRadio" type="radio" name="cdAction2"">Route</label>
+										<input onchange="actionChange()" class="routeText" type="text"
+											style="width: 235px;"><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="continueRadio" type="radio" name="cdAction2" checked>Continue</label><br />
+										<fieldset style="border: 0px;">
+											<label><input onchange="actionChange()"
+												class="playAnnouncementCheck" type="checkbox">Play
+												Announcement</label><br /> <label><input
+												onchange="actionChange()" class="collectDigitCheck"
+												type="checkbox">Collect Digit</label><br />
+										</fieldset>
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="deferredCheck"
+											type="checkbox">Deferred Response</label><br />
+									</div>
+									<div class="disconnectedActions" title="Disconnected"
+										style="padding: 10px;">
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="endCallRadio" type="radio"
+											name="cdAction3">End Call</label><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="routeRadio" type="radio" name="cdAction3"">Route</label>
+										<input onchange="actionChange()" class="routeText" type="text"
+											style="width: 235px;"><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="continueRadio" type="radio" name="cdAction3" checked>Continue</label><br />
+										<fieldset style="border: 0px;">
+											<label><input onchange="actionChange()"
+												class="playAnnouncementCheck" type="checkbox">Play
+												Announcement</label><br /> <label><input
+												onchange="actionChange()" class="collectDigitCheck"
+												type="checkbox">Collect Digit</label><br />
+										</fieldset>
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="deferredCheck"
+											type="checkbox">Deferred Response</label><br />
+									</div>
+									<div class="noAnswerActions" title="NoAnswer"
+										style="padding: 10px;">
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="endCallRadio" type="radio"
+											name="cdAction4">End Call</label><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="routeRadio" type="radio" name="cdAction4"">Route</label>
+										<input onchange="actionChange()" class="routeText" type="text"
+											style="width: 235px;"><br /> <label
+											style="margin: 3px;"><input class="continueRadio"
+											type="radio" name="cdAction4" checked>Continue</label><br />
+										<fieldset style="border: 0px;">
+											<label><input onchange="actionChange()"
+												class="playAnnouncementCheck" type="checkbox">Play
+												Announcement</label><br /> <label><input
+												onchange="actionChange()" class="collectDigitCheck"
+												type="checkbox">Collect Digit</label><br />
+										</fieldset>
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="deferredCheck"
+											type="checkbox">Deferred Response</label><br />
+									</div>
+									<div class="notReachableActions" title="NotReachable"
+										style="padding: 10px;">
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="endCallRadio" type="radio"
+											name="cdAction5">End Call</label><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="routeRadio" type="radio" name="cdAction5"">Route</label>
+										<input onchange="actionChange()" class="routeText" type="text"
+											style="width: 235px;"><br /> <label
+											style="margin: 3px;"><input onchange="actionChange()"
+											class="continueRadio" type="radio" name="cdAction5" checked>Continue</label><br />
+										<fieldset style="border: 0px;">
+											<label><input onchange="actionChange()"
+												class="playAnnouncementCheck" type="checkbox">Play
+												Announcement</label><br /> <label><input
+												onchange="actionChange()" class="collectDigitCheck"
+												type="checkbox">Collect Digit</label><br />
+										</fieldset>
+										<label style="margin: 3px;"><input
+											onchange="actionChange()" class="deferredCheck"
+											type="checkbox">Deferred Response</label><br />
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout0" class="easyui-layout" data-options="fit:true">
+							<div
+								data-options="region:'center',split:false,title:'Server Log',collapsible:false">
+								<textarea id="serverLog" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/call_notification.jpg'/&gt;&lt;br&gt;Call Notification&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 275px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 130px">
+								<ul id="notification" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallEvent','registerMsg')">Create
+											subscription</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','get')">Retrieve
+											subscription info</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','delete')">Remove
+											subscription</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton0" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton0" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton0" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties0" action="">
+									<div id='partyAdiv0' style="display: none;">
+										<div id="partyAdivtext0" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyA0" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyBdiv0" style="display: none;">
+										<div id="partyBdivtext0" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyB0" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv0" style="display: none;">
+										<div id="partyCdivtext0" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyC0" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+								<form id="events0" style="display: none;" action="">
+									<input id="Answer0" type="checkbox" checked
+										onchange="updateTemplate()" value="Answer">Answer<br>
+									<input id="Busy0" type="checkbox" checked
+										onchange="updateTemplate()" value="Busy">Busy<br>
+									<input id="NotReachable0" type="checkbox" checked
+										onchange="updateTemplate()" value="NotReachable">NotReachable<br>
+									<input id="NoAnswer0" type="checkbox" checked
+										onchange="updateTemplate()" value="NoAnswer">NoAnswer<br>
+									<input id="Disconnected0" type="checkbox" checked
+										onchange="updateTemplate()" value="Disconnected">Disconnected<br>
+									<input id="CalledNumber0" type="checkbox" checked
+										onchange="updateTemplate()" value="CalledNumber">CalledNumber
+									<br> <label>Direction <select
+										id="callDirectionSelect" onchange="directionChanged()">
+											<option value="Called">Called</option>
+											<option>Calling</option>
+									</select>
+									</label>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout0" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query0" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div data-options="region:'west',split:true,title:'Request Body'"
+								style="width: 600px;">
+								<textarea id="reqBody0" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div id="active0"
+								data-options="region:'center',title:'Event Subscription Info'"
+								style="padding-top: 10px;">
+								<div style="width: 450px; margin: 0 auto;">
+									<label style="margin-left: 10px;">Subscription Id:<input
+										id="callSubId" style="width: 300px; margin-left: 5px;"
+										type="text" value=""></label> <br> <br> <label
+										style="margin-left: 10px;""></label>
+									<div id="eventsTable" style="margin-left: 10px;"></div>
+								</div>
+							</div>
+							<div data-options="region:'south',split:true,title:'Response'"
+								style="height: 300px;">
+								<textarea id="reply0" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/call_direction.jpg'/&gt;&lt;br&gt;Call Direction&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 275px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 130px">
+								<ul id="direction" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallDirection','callDirectionMsg')">Create
+											subscription</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','get')">Retrieve
+											subscription info</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','delete')">Remove
+											subscription</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton1" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton1" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton1" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties1" action="">
+									<div id='partyAdiv1' style="display: none;">
+										<div id="partyAdivtext1" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyA1" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyBdiv1" style="display: none;">
+										<div id="partyBdivtext1" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyB1" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv1" style="display: none;">
+										<div id="partyCdivtext1" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyC1" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+								<form id="events1" style="display: none;" action="">
+									<input id="Busy1" type="checkbox" checked
+										onchange="updateTemplate()" value="Busy">Busy<br>
+									<input id="NotReachable1" type="checkbox" checked
+										onchange="updateTemplate()" value="NotReachable">NotReachable<br>
+									<input id="NoAnswer1" type="checkbox" checked
+										onchange="updateTemplate()" value="NoAnswer">NoAnswer<br>
+									<input id="Disconnected1" type="checkbox" checked
+										onchange="updateTemplate()" value="Disconnected">Disconnected<br>
+									<input id="CalledNumber1" type="checkbox" checked
+										onchange="updateTemplate()" value="CalledNumber">CalledNumber
+									<br>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout1" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query1" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div data-options="region:'west',split:true,title:'Request Body'"
+								style="width: 600px;">
+								<textarea id="reqBody1" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div id="active1"
+								data-options="region:'center',title:'Direction Subscription Info'"
+								style="padding-top: 10px;">
+								<div style="width: 450px; margin: 0 auto;">
+									<label style="margin-left: 10px;">Subscription Id:<input
+										id="directionSubId" style="width: 300px; margin-left: 5px;"
+										type="text" value=""></label> <br> <br> <label
+										style="margin-left: 10px;""></label>
+									<div id="directionEventsTable" style="margin-left: 10px;"></div>
+								</div>
+							</div>
+
+							<div data-options="region:'south',split:true,title:'Response'"
+								style="height: 300px;">
+								<textarea id="reply1" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/call_control.jpg'/&gt;&lt;br&gt;Call Control&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 275px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 230px">
+								<ul id="call" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSession','callMsg')">Click
+											to dial</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSession','callExtMsg')">Click
+											to dial from any party</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSession','callAnnouncementMsg')">Click
+											to dial with announcement</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionParticipants','addPartyMsg')">Add
+											participant to a call</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionParty','delete')">Remove
+											participant from call</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionParty','get')">Retrieve
+											participant info in call</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionParticipants', 'get')">Retrieve
+											list of participants in call</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionCallId', 'get')">Retrieve
+											call session info</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallSessionCallId','delete')">Remove
+											call session</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton2" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton2" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton2" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties2" action="">
+									<div id='partyAdiv2' style="display: none;">
+										<div id="partyAdivtext2" style="display: inline;">Calling
+											Address</div>
+										<input style="width: 250px" id="partyA2" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyBdiv0" style="display: none;">
+										<div id="partyBdivtext0" style="display: inline;">Called
+											Address</div>
+										<input style="width: 250px" id="partyB2" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv2" style="display: none;">
+										<div id="partyCdivtext2" style="display: inline;">Calling
+											Address</div>
+										<input style="width: 250px" id="partyC2" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout2" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query2" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div data-options="region:'west',split:true,title:'Request Body'"
+								style="width: 600px;">
+								<textarea id="reqBody2" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div id="active2"
+								data-options="region:'center',title:'CallSession Info'"
+								style="padding-top: 10px;">
+								<div style="width: 450px; margin: 0 auto;">
+									<label style="margin-left: 10px;">Session Id:<input
+										id="callSessionText" style="width: 300px; margin-left: 5px;"
+										type="text" value=""></label> <br> <br> <label
+										style="margin-left: 10px;"">Participants:</label>
+									<div id="participantsTable" style="margin-left: 10px;"></div>
+								</div>
+							</div>
+							<div data-options="region:'south',split:true,title:'Response'"
+								style="height: 300px;">
+								<textarea id="reply2" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/user.png'/&gt;&lt;br&gt;User Interaction&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 295px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 190px">
+								<ul id="userinteraction" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'AudioCallMsgText','textMsg')">Play
+											a text message</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'AudioCallMsgAudio','audioMsg')">Play
+											an audio message</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'AudioCallMsgVideo','videoMsg')">Play
+											a video message</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCollection','registerDigitsMsg')">Create
+											a collect digits subscription</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'AudioCallInteractCollection','collectDigitsMsg')">Play
+											media and collect digits</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','get')">Retrieve
+											collect digits subscription info</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','delete')">Remove
+											collect digits subscription</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton3" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton3" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton3" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties3" action="">
+									<div id='callSessiondiv3' style="display: inline;">
+										<div id="callSessiondivtext3" style="display: inline;">Call
+											Session</div>
+										<input style="width: 270px" id="callSession3" type="text"
+											value="" onKeyUp="updateTemplate()">
+									</div>
+									<div id='partyAdiv3' style="display: none;">
+										<div id="partyAdivtext3" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyA3" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyBdiv3" style="display: none;">
+										<div id="partyBdivtext3" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyB3" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv3" style="display: none;">
+										<div id="partyCdivtext3" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyC3" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout3" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query3" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div data-options="region:'west',split:true,title:'Request Body'"
+								style="width: 600px;">
+								<textarea id="reqBody3" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div id="active3"
+								data-options="region:'center',title:'Digit Collection Subscription Info'"
+								style="padding-top: 10px;">
+								<div style="width: 450px; margin: 0 auto;">
+									<label style="margin-left: 10px;">Subscription Id:<input
+										id="digitSubId" style="width: 300px; margin-left: 5px;"
+										type="text" value=""></label> <br> <br> <label
+										style="margin-left: 10px;""></label>
+									<div id="digitEventsTable" style="margin-left: 10px;"></div>
+								</div>
+							</div>
+							<div data-options="region:'south',split:true,title:'Response'"
+								style="height: 300px;">
+								<textarea id="reply3" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/self_care.png'/&gt;&lt;br&gt;Self Care&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 270px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 130px">
+								<ul id="usersettingstestcases" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'UserCapabilities','get')">Retrieve
+											capabilities</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'UserSettings','get')">Retrieve
+											settings</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'UserSettings','post')">Modify
+											settings</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton4" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton4" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton4" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties4" action="">
+									<div id='partyAdiv4' style="display: none;">
+										<div id="partyAdivtext4" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyA4" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateCommand()">
+									</div>
+									<div id="partyBdiv4" style="display: none;">
+										<div id="partyBdivtext4" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyB4" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv4" style="display: none;">
+										<div id="partyCdivtext4" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyC4" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout4" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query4" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div
+								data-options="region:'west',split:true,title:'Request Body',collapsed:true"
+								style="width: 600px;">
+								<textarea id="reqBody4" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div data-options="region:'center',title:'Response'"">
+								<textarea id="reply4" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div
+				title="&lt;span class='tt-inner'&gt;&lt;img src='images/call_history.png'/&gt;&lt;br&gt;Call History&lt;/span&gt;"
+				style="padding: 5px 0px 0px 0px">
+				<div class="easyui-layout" data-options="fit:true,border:false">
+					<div data-options="region:'west',split:true" style="width: 270px">
+						<div class="easyui-layout" data-options="fit:true,border:false">
+							<div
+								data-options="region:'north',title:'Test Cases',collapsible:false,split:true"
+								style="height: 110px">
+								<ul id="calllogstextcases" class="test_cases">
+									<li><a href="#"
+										onClick="changeTemplate(this, 'CallLogs','get')">Retrieve
+											call logs</a></li>
+								</ul>
+								<div style="text-align: center; width: 75%; margin: 0 auto;">
+									<button id="postButton5" disabled='disabled'
+										onclick="sendMsg('POST')">Post</button>
+									<button id="getButton5" disabled='disabled'
+										onclick="sendMsg('GET')">Get</button>
+									<button id="delButton5" disabled='disabled'
+										onclick="sendMsg('DELETE')">Delete</button>
+								</div>
+							</div>
+							<div data-options="region:'center',title:'Parameters'"
+								style="padding: 5px;">
+								<form id="parties5" action="">
+									<div id='partyAdiv5' style="display: none;">
+										<div id="partyAdivtext5" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyA5" type="text"
+											value="sip:+14692294727@foundry.att.com"
+											onKeyUp="updateCommand()">
+									</div>
+									<div id="partyBdiv5" " style="display: none;">
+										<div id="partyBdivtext5" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyB5" type="text"
+											value="sip:+14692294728@foundry.att.com"
+											onKeyUp="updateTemplate()">
+									</div>
+									<div id="partyCdiv5" style="display: none;">
+										<div id="partyCdivtext5" style="display: inline;">Address</div>
+										<input style="width: 250px" id="partyC5" type="text"
+											value="tel:+18007718734" onKeyUp="updateTemplate()">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div data-options="region:'center'">
+						<div id="cmdLayout5" class="easyui-layout" data-options="fit:true">
+							<div data-options="region:'north'" style="height: 30px">
+								<input id="query5" type="text" name="fname"
+									style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;">
+							</div>
+							<div
+								data-options="region:'west',split:true,title:'Request Body',collapsed:true"
+								style="width: 600px;">
+								<textarea id="reqBody5" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+							<div data-options="region:'center',title:'Response'">
+								<textarea id="reply5" wrap="soft"
+									style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"
+									cols="" rows=""></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id='alu_logo'>
+			<img src="images/alcatel-lucent-logo.png" alt="">
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html class="panel-fit"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>ApiTest</title>
+<link rel="stylesheet" type="text/css" href="ApiTest_files/easyui.css">
+<link rel="stylesheet" type="text/css" href="ApiTest_files/icon.css">
+<link rel="stylesheet" type="text/css" href="ApiTest_files/api.css">
+<script type="text/javascript" src="ApiTest_files/jquery_003.js"></script>
+<script type="text/javascript" src="ApiTest_files/jquery_002.js"></script>
+<script type="text/javascript" src="ApiTest_files/vkbeautify.js"></script>
+<script type="text/javascript" src="ApiTest_files/xml2json.js"></script>
+<script type="text/javascript" src="ApiTest_files/jquery.js"></script>
+<script type="text/javascript" src="ApiTest_files/api.js"></script>
+
+<style type="text/css">
+.tt-inner {
+  display: inline-block;
+  line-height: 12px;
+  padding-top: 5px;
+}
+
+.tt-inner img {
+  border: 0;
+  line-height: 12px;
+}
+</style>
+
+
+</head>
+<body class="easyui-layout layout panel-noscroll" onload="init()">
+  
+  <div style="left: 0px; top: 0px; width: 1308px;" class="panel layout-panel layout-panel-center"><div style="width: 1308px; height: 701px;" class="panel-body panel-body-noheader panel-body-noborder layout-body panel-noscroll" title="" data-options="region:'center',border:false">
+    <div style="width: 1308px; height: 701px;" id="tt" class="easyui-tabs tabs-container" data-options="tabWidth:130,tabHeight:60,fit:true,border:false">
+
+      
+
+      
+      
+      
+      
+      
+            
+      
+      
+      
+      
+      
+    <div style="width: 1308px;" class="tabs-header tabs-header-noborder"><div style="display: none;" class="tabs-scroller-left"></div><div style="display: none;" class="tabs-scroller-right"></div><div style="margin-left: 0px; margin-right: 0px; width: 1308px;" class="tabs-wrap"><ul style="height: 59px;" class="tabs"><li class=""><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/gear2.jpg"><br>App Server</span></span><span class="tabs-icon"></span></a></li><li class="tabs-selected"><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/call_notification.jpg"><br>Call Notification</span></span><span class="tabs-icon"></span></a></li><li><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/call_direction.jpg"><br>Call Direction</span></span><span class="tabs-icon"></span></a></li><li><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/call_control.jpg"><br>Call Control</span></span><span class="tabs-icon"></span></a></li><li><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/user.png"><br>User Interaction</span></span><span class="tabs-icon"></span></a></li><li><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/self_care.png"><br>Self Care</span></span><span class="tabs-icon"></span></a></li><li><a style="width: 108px; height: 58px; line-height: 58px;" href="javascript:void(0)" class="tabs-inner"><span class="tabs-title"><span class="tt-inner"><img src="ApiTest_files/call_history.png"><br>Call History</span></span><span class="tabs-icon"></span></a></li></ul></div></div><div style="height: 639px; width: 1308px;" class="tabs-panels tabs-panels-noborder"><div style="display: none; width: 1308px;" class="panel"><div class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px; width: 1308px; height: 634px;">
+        <div style="width: 1308px; height: 634px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 270px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 268px; height: 632px;">
+            <div style="width: 268px; height: 632px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 268px;" class="panel layout-panel layout-panel-center"><div style="width: 264px;" class="panel-header"><div class="panel-title">Call Direction Actions</div><div class="panel-tool"></div></div><div style="width: 266px; height: 611px;" class="panel-body layout-body" title="" data-options="region:'center',title:'Call Direction Actions',collapsible:false,split:false">
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 275px; top: 0px; width: 1033px;" class="panel layout-panel layout-panel-center"><div style="width: 1031px; height: 632px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1031px; height: 632px;" id="cmdLayout0" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1031px;" class="panel layout-panel layout-panel-center"><div style="width: 1027px;" class="panel-header"><div class="panel-title">Server Log</div><div class="panel-tool"></div></div><div style="width: 1029px; height: 611px;" class="panel-body layout-body" title="" data-options="region:'center',split:false,title:'Server Log',collapsible:false">
+                <textarea id="reply0" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: block; width: 1308px;" class="panel"><div class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px; width: 1308px; height: 634px;">
+        <div style="width: 1308px; height: 634px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 270px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 268px; height: 632px;">
+            <div style="width: 268px; height: 632px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 268px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 264px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 104px; width: 266px;">
+                <ul id="notification" class="test_cases">
+                  <li><a class="selected" href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallEvent','registerMsg')">Create subscription</a></li>
+                  <li><a class="" href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','get')">Retrieve subscription info</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','delete')">Remove subscription</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton1" onclick="sendMsg('POST')">Post</button>
+                  <button disabled="disabled" id="getButton1" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton1" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 130px; width: 268px;" class="panel layout-panel layout-panel-center"><div style="width: 264px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 256px; height: 471px;">
+              <form id="parties1">
+                  <div id="partyAdiv1" style="display: none;">
+                    <div id="partyAdivtext1" style="display: inline;">Calling Address</div>
+                    <input style="width: 250px" id="partyA1" value="sip:+14692294727@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyBdiv1" style="display: inline;">
+                    <div id="partyBdivtext1" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyB1" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv1" style="display: none;">
+                    <div id="partyCdivtext1" style="display: inline;">Calling Address</div>
+                    <input style="width: 250px" id="partyC1" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>
+               <form id="events1" style="display: inline;">
+                  <input id="Answer1" checked="checked" onchange="updateTemplate()" value="Answer" type="checkbox">Answer<br>
+                  <input id="Busy1" checked="checked" onchange="updateTemplate()" value="Busy" type="checkbox">Busy<br>
+                  <input id="NotReachable1" checked="checked" onchange="updateTemplate()" value="NotReachable" type="checkbox">NotReachable<br>
+                  <input id="NoAnswer" checked="checked" onchange="updateTemplate()" value="NoAnswer" type="checkbox">NoAnswer<br>
+                  <input id="Disconnected1" checked="checked" onchange="updateTemplate()" value="Disconnected" type="checkbox">Disconnected<br>
+                  <input id="CalledNumber1" checked="checked" onchange="updateTemplate()" value="CalledNumber" type="checkbox">CalledNumber <br>
+                  <label>Direction
+                  <select id="callDirectionSelect" onchange="directionChanged()">
+                    <option selected="selected" value="Called">Called
+                    </option><option>Calling
+                  </option></select> 
+                  </label>
+                </form>
+                </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 275px; top: 0px; width: 1033px;" class="panel layout-panel layout-panel-center"><div style="width: 1031px; height: 632px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1031px; height: 632px;" id="cmdLayout1" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1031px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1029px;">
+                <input value="https://dev.api.foundry.att.com/v4/AluTest/callevents" id="query1" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: 0px; top: 30px; width: 595px;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body'" style="width: 593px; height: 281px;">
+                <textarea id="reqBody1" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;">{
+    "address": "sip:+14692294728@foundry.att.com",
+    "notifyURL": "http://tomnodeserver:8080/callEvent?id={msisdn}",
+    "criteria": [
+        "Answer",
+        "Busy",
+        "NotReachable",
+        "Disconnected",
+        "CalledNumber"
+    ],
+    "direction": "Called"
+}</textarea>
+              </div></div>
+              <div style="left: 600px; top: 30px; width: 431px;" class="panel layout-panel layout-panel-center"><div style="width: 427px;" class="panel-header"><div class="panel-title">Event Subscription Info</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" id="active1" data-options="region:'center',title:'Event Subscription Info'" style="padding-top: 10px; width: 429px; height: 271px;">
+                <div style="width: 450px; margin: 0 auto;">
+                  <label style="margin-left: 10px;">Subscription Id:<input id="callSubId" style="width: 300px; margin-left: 5px;" type="text"></label> <br> <br> <label style="margin-left: 10px;" "=""></label>
+                  <div id="eventsTable" style="margin-left: 10px;"></div>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 332px; width: 1031px;" class="panel layout-panel layout-panel-south layout-split-south"><div style="width: 1027px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-down" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'south',split:true,title:'Response'" style="height: 274px; width: 1029px;">
+                <textarea id="reply1" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: none;" class="panel"><div id="" class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px 0px">
+        <div style="width: 1293px; height: 0px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 270px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 268px; height: 138px;">
+            <div style="width: 268px; height: 138px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 268px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 264px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 104px; width: 266px;">
+                <ul id="direction" class="test_cases">
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallDirection','callDirectionMsg')">Create subscription</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','get')">Retrieve subscription info</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','delete')">Remove subscription</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton2" onclick="sendMsg('POST')">Post</button>
+                  <button id="getButton2" disabled="disabled" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton2" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 130px; width: 268px;" class="panel layout-panel layout-panel-center"><div style="width: 264px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 256px; height: 0px;">
+              <form id="parties2">
+                  <div id="partyAdiv2" style="display: none;">
+                    <div id="partyAdivtext2" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyA2" value="sip:+14692294727@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyBdiv2" style="display: none;">
+                    <div id="partyBdivtext2" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyB2" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv2" style="display: none;">
+                    <div id="partyCdivtext2" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyC2" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>
+                <form id="events2" style="display: none;">
+                  <input id="Busy2" checked="checked" onchange="updateTemplate()" value="Busy" type="checkbox">Busy<br>
+                  <input id="NotReachable2" checked="checked" onchange="updateTemplate()" value="NotReachable" type="checkbox">NotReachable<br>
+                  <input id="NoAnswer2" checked="checked" onchange="updateTemplate()" value="NoAnswer" type="checkbox">NoAnswer<br>
+                  <input id="Disconnected2" checked="checked" onchange="updateTemplate()" value="Disconnected" type="checkbox">Disconnected<br>
+                  <input id="CalledNumber2" checked="checked" onchange="updateTemplate()" value="CalledNumber" type="checkbox">CalledNumber <br>
+                </form>
+                </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 275px; top: 0px; width: 1018px;" class="panel layout-panel layout-panel-center"><div style="width: 1016px; height: 435px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1016px; height: 435px;" id="cmdLayout2" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1016px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1014px;">
+                <input value="https://dev.api.foundry.att.com/v4/AluTest/calldirections" id="query2" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: 0px; top: 30px; width: 595px;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body'" style="width: 593px; height: 84px;">
+                <textarea id="reqBody2" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;">{
+    "address": "sip:+14692294729@foundry.att.com",
+    "notifyURL": "http://tomnodeserver:8080/callDirection?id={msidn}",
+    "criteria": [
+        "Busy",
+        "NotReachable",
+        "NoAnswer",
+        "Disconnected",
+        "CalledNumber"
+    ]
+}</textarea>
+              </div></div>
+              <div style="left: 600px; top: 30px; width: 416px;" class="panel layout-panel layout-panel-center"><div style="width: 412px;" class="panel-header"><div class="panel-title">Direction Subscription Info</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" id="active2" data-options="region:'center',title:'Direction Subscription Info'" style="padding-top: 10px; width: 414px; height: 74px;">
+                <div style="width: 450px; margin: 0 auto;">
+                  <label style="margin-left: 10px;">Subscription Id:<input id="directionSubId" style="width: 300px; margin-left: 5px;" type="text"></label> <br> <br> <label style="margin-left: 10px;" "=""></label>
+                  <div id="directionEventsTable" style="margin-left: 10px;"></div>
+                </div>
+              </div></div>
+              
+              <div style="left: 0px; top: 135px; width: 1016px;" class="panel layout-panel layout-panel-south layout-split-south"><div style="width: 1012px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-down" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'south',split:true,title:'Response'" style="height: 274px; width: 1014px;">
+                <textarea id="reply2" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: none;" class="panel"><div id="" class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px 0px">
+        <div style="width: 1293px; height: 0px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 270px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 268px; height: 238px;">
+            <div style="width: 268px; height: 238px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 268px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 264px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 204px; width: 266px;">
+                <ul id="call" class="test_cases">
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSession','callMsg')">Click to dial</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSession','callExtMsg')">Click to dial from any party</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSession','callAnnouncementMsg')">Click to dial with announcement</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionParticipants','addPartyMsg')">Add participant to a call</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionParty','delete')">Remove participant from call</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionParty','get')">Retrieve participant info in call</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionParticipants', 'get')">Retrieve list of participants in call</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionCallId', 'get')">Retrieve call session info</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'CallSessionCallId','delete')">Remove call session</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton0" disabled="disabled" onclick="sendMsg('POST')">Post</button>
+                  <button id="getButton0" disabled="disabled" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton0" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 230px; width: 268px;" class="panel layout-panel layout-panel-center"><div style="width: 264px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 256px; height: 0px;">
+                <form id="parties0">
+                  <div id="partyAdiv0" style="display: none;">
+                    <div id="partyAdivtext0" style="display: inline;">Calling Address</div>
+                    <input style="width: 250px" id="partyA0" value="sip:+14692294727@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyBdiv0" style="display: none;">
+                    <div id="partyBdivtext0" style="display: inline;">Called Address</div>
+                    <input style="width: 250px" id="partyB0" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv0" style="display: none;">
+                    <div id="partyCdivtext0" style="display: inline;">Calling Address</div>
+                    <input style="width: 250px" id="partyC0" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>               
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 275px; top: 0px; width: 1018px;" class="panel layout-panel layout-panel-center"><div style="width: 1016px; height: 435px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1016px; height: 435px;" id="cmdLayout0" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1016px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1014px;">
+                <input id="query0" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: 0px; top: 30px; width: 595px;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body'" style="width: 593px; height: 84px;">
+                <textarea id="reqBody0" wrap="soft" style="resize: none; width:100%; height:100%; border:0px; padding:0px; margin:0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+              <div style="left: 600px; top: 30px; width: 416px;" class="panel layout-panel layout-panel-center"><div style="width: 412px;" class="panel-header"><div class="panel-title">CallSession Info</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" id="active0" data-options="region:'center',title:'CallSession Info'" style="padding-top: 10px; width: 414px; height: 74px;">
+                <div style="width: 450px; margin: 0 auto;">
+                  <label style="margin-left: 10px;">Session Id:<input id="callSessionText" style="width: 300px; margin-left: 5px;" type="text"></label> <br> <br> <label style="margin-left: 10px;" "="">Participants:</label>
+                  <div id="participantsTable" style="margin-left: 10px;"><br><table class="center"></table></div>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 135px; width: 1016px;" class="panel layout-panel layout-panel-south layout-split-south"><div style="width: 1012px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-down" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'south',split:true,title:'Response'" style="height: 274px; width: 1014px;">
+                <textarea id="reply0" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: none;" class="panel"><div id="" class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px 0px">
+        <div style="width: 1308px; height: 0px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 290px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 288px; height: 238px;">
+            <div style="width: 288px; height: 238px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 288px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 284px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 164px; width: 286px;">
+                <ul id="userinteraction0" class="test_cases">
+                  <li><a href="#" onclick="changeTemplate(this, 'AudioCallMsgText','textMsg')">Play a text message</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'AudioCallMsgAudio','audioMsg')">Play an audio message</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'AudioCallMsgVideo','videoMsg')">Play a video message</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCollection','registerDigitsMsg')">Create a collect digits subscription</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'AudioCallInteractCollection','collectDigitsMsg')">Play media and collect digits</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','get')">Retrieve collect digits subscription info</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','delete')">Remove collect digits subscription</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton3" disabled="disabled" onclick="sendMsg('POST')">Post</button>
+                  <button id="getButton3" disabled="disabled" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton3" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 190px; width: 288px;" class="panel layout-panel layout-panel-center"><div style="width: 284px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 276px; height: 17px;">
+              <form id="parties3">
+                  <div id="callSessiondiv3" style="display: inline;">
+                    <div id="callSessiondivtext3" style="display: inline;">Call Session</div>
+                    <input style="width: 270px" id="callSession3" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyAdiv3" style="display: none;">
+                    <div id="partyAdivtext3" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyA3" value="sip:+14692294727@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyBdiv3" style="display: none;">
+                    <div id="partyBdivtext3" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyB3" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv3" style="display: none;">
+                    <div id="partyCdivtext3" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyC3" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>
+                </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 295px; top: 0px; width: 1013px;" class="panel layout-panel layout-panel-center"><div style="width: 1011px; height: 435px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1011px; height: 435px;" id="cmdLayout3" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1011px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1009px;">
+                <input id="query3" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: 0px; top: 30px; width: 595px;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body'" style="width: 593px; height: 84px;">
+                <textarea id="reqBody3" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+              <div style="left: 600px; top: 30px; width: 411px;" class="panel layout-panel layout-panel-center"><div style="width: 407px;" class="panel-header"><div class="panel-title">Digit Collection Subscription Info</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" id="active3" data-options="region:'center',title:'Digit Collection Subscription Info'" style="padding-top: 10px; width: 409px; height: 74px;">
+                <div style="width: 450px; margin: 0 auto;">
+                  <label style="margin-left: 10px;">Subscription Id:<input id="digitSubId" style="width: 300px; margin-left: 5px;" type="text"></label> <br> <br> <label style="margin-left: 10px;" "=""></label>
+                  <div id="digitEventsTable" style="margin-left: 10px;"></div>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 135px; width: 1011px;" class="panel layout-panel layout-panel-south layout-split-south"><div style="width: 1007px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a><a class="layout-button-down" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'south',split:true,title:'Response'" style="height: 274px; width: 1009px;">
+                <textarea id="reply3" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: none;" class="panel"><div id="" class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px 0px">
+        <div style="width: 1308px; height: 0px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 265px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 263px; height: 138px;">
+            <div style="width: 263px; height: 138px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 263px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 259px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 104px; width: 261px;">
+                <ul id="usersettingstestcases" class="test_cases">
+                  <li><a href="#" onclick="changeTemplate(this, 'UserCapabilities','get')">Retrieve capabilities</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'UserSettings','get')">Retrieve settings</a></li>
+                  <li><a href="#" onclick="changeTemplate(this, 'UserSettings','post')">Modify settings</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton4" disabled="disabled" onclick="sendMsg('POST')">Post</button>
+                  <button id="getButton4" disabled="disabled" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton4" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 130px; width: 263px;" class="panel layout-panel layout-panel-center"><div style="width: 259px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 251px; height: 0px;">
+                <form id="parties4">
+                  <div id="partyAdiv4" style="display: none;">
+                    <div id="partyAdivtext4" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyA4" value="sip:+14692294727@foundry.att.com" onkeyup="updateCommand()" type="text">
+                  </div>
+                  <div id="partyBdiv4" style="display: none;">
+                    <div id="partyBdivtext4" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyB4" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv4" style="display: none;">
+                    <div id="partyCdivtext4" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyC4" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 270px; top: 0px; width: 1038px;" class="panel layout-panel layout-panel-center"><div style="width: 1036px; height: 110px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1036px; height: 110px;" id="cmdLayout4" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1036px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1034px;">
+                <input id="query4" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: -600px; top: 30px; width: 595px; height: 80px; display: none;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse panel-tool-expand" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div id="" class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body',collapsed:true" style="width: 593px; display: none; height: 59px;">
+                <textarea id="reqBody4" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+              <div style="left: 28px; top: 30px; width: 1008px;" class="panel layout-panel layout-panel-center"><div style="width: 1004px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div style="width: 1006px; height: 59px;" class="panel-body layout-body" title="" data-options="region:'center',title:'Response'" "="">
+                <textarea id="reply4" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div><div style="display: block; left: 0px; top: 30px; width: 28px;" class="panel layout-expand"><div style="width: 24px;" class="panel-header"><div class="panel-title">&nbsp;</div><div class="panel-tool"><a class="layout-button-right" href="javascript:void(0)"></a></div></div><div style="width: 26px; height: 60px;" class="panel-body" title=""></div></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div><div style="display: none;" class="panel"><div id="" class="panel-noscroll panel-body panel-body-noheader panel-body-noborder" title="" style="padding: 5px 0px 0px 0px">
+        <div style="width: 1308px; height: 0px;" class="easyui-layout layout" data-options="fit:true,border:false">
+          <div style="left: 0px; top: 0px; width: 265px;" class="panel layout-panel layout-panel-west layout-split-west"><div class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'west',split:true" style="width: 263px; height: 118px;">
+            <div style="width: 263px; height: 118px;" class="easyui-layout layout" data-options="fit:true,border:false">
+              <div style="left: 0px; top: 0px; width: 263px;" class="panel layout-panel layout-panel-north layout-split-north"><div style="width: 259px;" class="panel-header"><div class="panel-title">Test Cases</div><div class="panel-tool"><a style="display: none;" class="layout-button-up" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'north',title:'Test Cases',collapsible:false,split:true" style="height: 84px; width: 261px;">
+                <ul id="calllogstextcases" class="test_cases">
+                  <li><a href="#" onclick="changeTemplate(this, 'CallLogs','get')">Retrieve call logs</a></li>
+                </ul>
+                <div style="text-align:center; width:75%; margin: 0 auto;">
+                  <button id="postButton5" disabled="disabled" onclick="sendMsg('POST')">Post</button>
+                  <button id="getButton5" disabled="disabled" onclick="sendMsg('GET')">Get</button>
+                  <button id="delButton5" disabled="disabled" onclick="sendMsg('DELETE')">Delete</button>
+                </div>
+              </div></div>
+              <div style="left: 0px; top: 110px; width: 263px;" class="panel layout-panel layout-panel-center"><div style="width: 259px;" class="panel-header"><div class="panel-title">Parameters</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div class="panel-body layout-body" title="" data-options="region:'center',title:'Parameters'" style="padding: 5px; width: 251px; height: 0px;">
+                <form id="parties5">
+                  <div id="partyAdiv5" style="display: none;">
+                    <div id="partyAdivtext5" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyA5" value="sip:+14692294727@foundry.att.com" onkeyup="updateCommand()" type="text">
+                  </div>
+                  <div id="partyBdiv5&quot;" style="display: none;">
+                    <div id="partyBdivtext5" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyB5" value="sip:+14692294728@foundry.att.com" onkeyup="updateTemplate()" type="text">
+                  </div>
+                  <div id="partyCdiv5" style="display: none;">
+                    <div id="partyCdivtext5" style="display: inline;">Address</div>
+                    <input style="width: 250px" id="partyC5" value="tel:+18007718734" onkeyup="updateTemplate()" type="text">
+                  </div>
+                </form>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+          </div></div>
+          <div style="left: 270px; top: 0px; width: 1038px;" class="panel layout-panel layout-panel-center"><div style="width: 1036px; height: 110px;" class="panel-body panel-body-noheader layout-body panel-noscroll" title="" data-options="region:'center'">
+            <div style="width: 1036px; height: 110px;" id="cmdLayout5" class="easyui-layout layout" data-options="fit:true">
+              <div style="left: 0px; top: 0px; width: 1036px;" class="panel layout-panel layout-panel-north"><div class="panel-body panel-body-noheader layout-body" title="" data-options="region:'north'" style="height: 28px; width: 1034px;">
+                <input id="query5" name="fname" style="height: 100%; width: 100%; padding: 0; margin: 0; border: 0; text-indent: 5px;" type="text">
+              </div></div>
+              <div style="left: -600px; top: 30px; width: 595px; height: 80px; display: none;" class="panel layout-panel layout-panel-west layout-split-west"><div style="width: 591px;" class="panel-header"><div class="panel-title">Request Body</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse panel-tool-expand" href="javascript:void(0)"></a><a class="layout-button-left" href="javascript:void(0)"></a></div></div><div id="" class="panel-body layout-body" title="" data-options="region:'west',split:true,title:'Request Body',collapsed:true" style="width: 593px; display: none; height: 59px;">
+                <textarea id="reqBody5" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+              <div style="left: 28px; top: 30px; width: 1008px;" class="panel layout-panel layout-panel-center"><div style="width: 1004px;" class="panel-header"><div class="panel-title">Response</div><div class="panel-tool"><a style="display: none;" class="panel-tool-collapse" href="javascript:void(0)"></a></div></div><div style="width: 1006px; height: 59px;" class="panel-body layout-body" title="" data-options="region:'center',title:'Response'">
+                <textarea id="reply5" wrap="soft" style="resize: none; width: 100%; height: 100%; border: 0px; padding: 0px; margin: 0px 0px -4px 0px; box-sizing: border-box; -webkit-box-sizing: border-box;"></textarea>
+              </div></div>
+            <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div><div style="display: block; left: 0px; top: 30px; width: 28px;" class="panel layout-expand"><div style="width: 24px;" class="panel-header"><div class="panel-title">&nbsp;</div><div class="panel-tool"><a class="layout-button-right" href="javascript:void(0)"></a></div></div><div style="width: 26px; height: 60px;" class="panel-body" title=""></div></div></div>
+          </div></div>
+        <div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></div>
+      </div></div></div></div>
+    <div id="alu_logo">
+      <img src="ApiTest_files/alcatel-lucent-logo.png">
+    </div>
+  </div></div>
+  <script>
+	$(document).ready(function() {
+         });
+  </script>    
+
+
+
+<div class="layout-split-proxy-h"></div><div class="layout-split-proxy-v"></div></body></html>
