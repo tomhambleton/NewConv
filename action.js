@@ -1,4 +1,4 @@
-var request = require('request');
+var request = require('needle');
 var logger = require('./logger');
 
 /**
@@ -54,7 +54,7 @@ var defaultActions = {
 		} };
 
 function DeferredAction(reqObj, retObj) {
-	this.reqObj = subId;
+	this.reqObj = reqObj;
 	this.retObj = retObj;
 }
 
@@ -67,8 +67,8 @@ function Action(actions) {
 		console.log("In handleTimeout: "+id);
 		if (this.deferredList[id] !== undefined) {
 			console.log("Send POST for deferred response");
-			var url = server + 'calldirections/' + this.deferredList[id].reqObj.subId+'deferred';
-		    var r = request.post(url, this.deferredList[id].retObj, function callback(err, response, body) {
+			var url = server + '/calldirections/' + this.deferredList[id].reqObj.subId+'/deferred';
+		    var r = request.post(url, this.deferredList[id].retObj, { rejectUnauthorized:false }, function callback(err, response, body) {
 		    	if (err) {
 		    		console.log('POST failed'+ err);
 		    	} else {

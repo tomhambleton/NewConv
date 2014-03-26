@@ -11,6 +11,8 @@ var express = require('express')
   , action = require('./action')
   , path = require('path');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 var app = express();
 
 var allowCrossDomain = function(req, res, next) {

@@ -13,7 +13,11 @@ var currentMethod = '';
 var x2js = new X2JS();
 var currentSelection = "";
 
-var server = "https://dev.api.foundry.att.com/v5/AluTest";
+var serverData = {
+		server : "https://dev.api.foundry.att.com/v5/AluTest",
+		clientID : "ezx8wqmd9y2eyyghzdhoy0qzqcem5hud",  // AluTest App
+};
+
 var msisdn = "123456";
 var access_token = null;
 var serverLog = null;
@@ -39,9 +43,9 @@ var communicationSettings = "";
 
 var changeTemplateVector = [];
 
-// 
-// Properties should match associated div names
-//
+
+//Properties should match associated div names
+
 var callDirectionActions = {
 		calledNumberActions: {
 			endCallFlag: false,
@@ -118,97 +122,89 @@ urlAtt['CallLogs'] = 'selfcare/1.0/callLog/{puid}';
 var urlArray = urlAtt;
 
 var jsondata = {};
-jsondata['callMsg'] = 
-	'{"callSessionInformation": {' 
+jsondata['callMsg'] = '{"callSessionInformation": {'
 	+ '"clientCorrelator": "{ClientCorrelator}",'
 	+ '"participant": ['
 	+ '{"participantAddress": "{partyA}", "participantName": "Max Muster" },'
 	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ]'
 	+ '}}';
 
-jsondata['callExtMsg'] = 
-	'{"callSessionInformation": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"participant": ['
-    + '{"participantAddress": "{partyA};ext={partyC}", "participantName": "Max Muster" },'
-    + '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ]'
-    + '}}';
+jsondata['callExtMsg'] = '{"callSessionInformation": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"participant": ['
+	+ '{"participantAddress": "{partyA};ext={partyC}", "participantName": "Max Muster" },'
+	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ]'
+	+ '}}';
 
-jsondata['callAnnouncementMsg'] = 
-	'{"callSessionInformation": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"participant": ['
-    + '{"participantAddress": "{partyA}", "participantName": "Max Muster" },'
-    + '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ],'
-    + '"originatorAnnouncement": "http://{domain}:8080/ApiTest/ann1.mp3;messageFormat=Audio"'
-    + '}}';
+jsondata['callAnnouncementMsg'] = '{"callSessionInformation": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"participant": ['
+	+ '{"participantAddress": "{partyA}", "participantName": "Max Muster" },'
+	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ],'
+	+ '"originatorAnnouncement": "http://{domain}:8080/ApiTest/ann1.mp3;messageFormat=Audio"'
+	+ '}}';
 
-jsondata['addPartyMsg'] = 
-	'{"callParticipantInformation": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"participantAddress": "{partyC}", "participantName": "John E. Xample"'
-    + '}}';
+jsondata['addPartyMsg'] = '{"callParticipantInformation": {' 
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"participantAddress": "{partyC}", "participantName": "John E. Xample"'
+	+ '}}';
 
 jsondata['textMsg'] = 
-	'{"textMessage": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"callSessionIdentifier": "{callId}",'
-    + '"callParticipant": [ "{partyB}" ],'
-    + '"text": "http://{domain}:8080/ApiTest/test1.txt"'
-    + '}}';
+	'{"textMessage": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"callSessionIdentifier": "{callId}",'
+	+ '"callParticipant": [ "{partyB}" ],'
+	+ '"text": "http://{domain}:8080/ApiTest/test1.txt"'
+	+ '}}';
 
-jsondata['audioMsg'] = 
-	'{"audioMessage": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"callSessionIdentifier": "{callId}",'
-    + '"callParticipant": [ "{partyB}" ],'
-    + '"mediaType": "audio/mpeg",'
-    + '"mediaUrl": "http://{domain}:8080/ApiTest/ann1.mp3"'
-    + '}}';
+jsondata['audioMsg'] = '{"audioMessage": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"callSessionIdentifier": "{callId}",'
+	+ '"callParticipant": [ "{partyB}" ],'
+	+ '"mediaType": "audio/mpeg",'
+	+ '"mediaUrl": "http://{domain}:8080/ApiTest/ann1.mp3"'
+	+ '}}';
 
-jsondata['videoMsg'] = 
-	'{"videoMessage": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"callSessionIdentifier": "{callId}",'
-    + '"callParticipant": [ "{partyB}" ],'
-    + '"mediaType": "video.mp4",'
-    + '"mediaUrl": "http://{domain}:8080/ApiTest/video.mp4"'
-    + '}}';
+jsondata['videoMsg'] = '{"videoMessage": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"callSessionIdentifier": "{callId}",'
+	+ '"callParticipant": [ "{partyB}" ],'
+	+ '"mediaType": "video.mp4",'
+	+ '"mediaUrl": "http://{domain}:8080/ApiTest/video.mp4"'
+	+ '}}';
 
-jsondata['collectDigitsMsg'] = 
-	'{"digitCapture": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"callSessionIdentifier": "{callId}",'
-    + '"callbackReference": { "notifyURL":"http://{domain}:8080/ApiTest/Servlet/digitsNotification", "notificationFormat": "JSON" }'
-    + '}}';
+jsondata['collectDigitsMsg'] = '{"digitCapture": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"callSessionIdentifier": "{callId}",'
+	+ '"callbackReference": { "notifyURL":"http://{domain}:8080/ApiTest/Servlet/digitsNotification", "notificationFormat": "JSON" }'
+	+ '}}';
 
-jsondata['registerDigitsMsg'] = 
-	'{"playAndCollectInteractionSubscription": {' 
-    + '"clientCorrelator": "{ClientCorrelator}",'
-    + '"callSessionIdentifier": "{callId}",'
-    + '"callParticipant": [ "{partyB}" ],'
-    + '"playingConfiguration": { '
-    + ' "playFileLocation":"http://{domain}:8080/ApiTest/ann1.mp3",'
-    + ' "messageFormat":"Audio",'
-    + ' "mediaType":"audio/mpeg",'
-    + ' "interruptMedia":"true" },'
-    + '"digitConfiguration": { '
-    + ' "minDigits":"1",'
-    + ' "maxDigits":"4",'
-    + ' "interruptMedia":"false" }'
-    + '}}';
+jsondata['registerDigitsMsg'] = '{"playAndCollectInteractionSubscription": {'
+	+ '"clientCorrelator": "{ClientCorrelator}",'
+	+ '"callSessionIdentifier": "{callId}",'
+	+ '"callParticipant": [ "{partyB}" ],'
+	+ '"playingConfiguration": { '
+	+ ' "playFileLocation":"http://{domain}:8080/ApiTest/ann1.mp3",'
+	+ ' "messageFormat":"Audio",'
+	+ ' "mediaType":"audio/mpeg",'
+	+ ' "interruptMedia":"true" },'
+	+ '"digitConfiguration": { '
+	+ ' "minDigits":"1",'
+	+ ' "maxDigits":"4",'
+	+ ' "interruptMedia":"false" }'
+	+ '}}';
 
-jsondata['registerMsg'] =
-	'{ "address":"{partyB}",'
-	+ '"notifyURL":"http://{domain}:8080/callEvent?id={msisdn}",' + '"criteria": [ {criteria} ],'
-    + '"direction":"{direction}"'
-    + '}';
+jsondata['callDirectionMsg'] = '{ "address": "{partyB}",'
+	+ '"notifyURL":"http://{domain}:8080/callDirection?id={msisdn}",'
+	+ '"criteria": [ {criteria} ]'
+	+ '}';
 
-jsondata['callDirectionMsg'] =
-	'{ "address": "{partyB}",'
-    + '"notifyURL":"http://{domain}:8080/callDirection?id={msisdn}",'
-    + '"criteria": [ {criteria} ]'
-    + '}';
+jsondata['registerMsg'] = '{ "address": "{partyB}",'
+	+ '"notifyURL":"http://{domain}:8080/callEvent?id={msisdn}",'
+	+ '"criteria": [ {criteria} ],' + '"direction":"{direction}"'
+	+ '}';
+
+
 
 var msgdata = jsondata;
 
@@ -254,19 +250,19 @@ function tabSelected(index) {
 	partyC = "partyC"+index;
 	events = "events"+index;
 	cmdLayout = "cmdLayout"+index;
-	if (tabCmdSelected[tabIndex] != undefined) {
+	if (tabCmdSelected[tabIndex] !== undefined) {
 		changeTemplate(tabCmdSelected[tabIndex].e, tabCmdSelected[tabIndex].cmd, tabCmdSelected[tabIndex].key);
-	} 	
+	}
 }
 
 function getOAuthUrl() {
-    var oauth_server = "https://auth.tfoundry.com";
-    var authorize_path = "/oauth/authorize";
-    var clientID = "ezx8wqmd9y2eyyghzdhoy0qzqcem5hud";  // AluTest App
-    var scope = 'alutest';
-    var redirectURI = "http://"+document.domain+":8080/ApiTest/index.html";
-    return oauth_server + authorize_path + "?response_type=token&client_id=" +
-            clientID + "&scope=" + scope + "&redirect_uri=" + redirectURI;
+	var oauth_server = "https://auth.tfoundry.com";
+	var authorize_path = "/oauth/authorize";
+
+	var scope = 'alutest';
+	var redirectURI = "http://"+document.domain+":8080/ApiTest/index.html";
+	return oauth_server + authorize_path + "?response_type=token&client_id=" +
+	serverData.clientID + "&scope=" + scope + "&redirect_uri=" + redirectURI;
 }
 
 function init()
@@ -277,38 +273,51 @@ function init()
 	var regex =/([^&=]+)=([^&]*)/g;
 	var m;
 	var html = '';
-	console.log(queryString);
+	//console.log(queryString);
 	while (m = regex.exec(queryString)) {
 		oauthParams[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
 	}
 	access_token = oauthParams['access_token'];
 	console.log("access_token = "+access_token);
-	if (access_token == undefined) {
-		window.location.href = getOAuthUrl();  // Go to ApiMatrix to get access_token
-	} else {
-		$('#tt').tabs({
-			onSelect: function(title,index){
-				index = index-1;
-				console.log("Select tab:"+index);
-				tabSelected(index);
-			}
-		});
-		serverLog = document.getElementById("serverLog");
-		loadParties();
-		loadSubscriptions();
-		pollLogs();
-		updateSubscriptionTable();
-		updateSessionTable();
-		tabSelected(0);
-		changeTemplateVector[0] = changeTemplatePRS;
-		changeTemplateVector[1] = changeTemplatePRS;
-		changeTemplateVector[2] = changeTemplatePRS;
-		changeTemplateVector[3] = changeTemplatePRS;
-		changeTemplateVector[4] = changeTemplatePCM;
-		changeTemplateVector[5] = changeTemplatePCM;
+	$.getJSON( "config.json", function( data ) {
+		if (data.server != undefined) {
+			serverData.server = data.server;
+		}
+		if (data.clientID != undefined) {
+			serverData.clientID = data.clientID;
+		}
+		console.log("server = "+serverData.server);
+		console.log("clientID = "+serverData.clientID);
 
-		//$("#mainLayout").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
-	}
+		if (access_token === undefined) {
+			window.location.href = getOAuthUrl();  // Go to ApiMatrix to get access_token
+		} else {
+			$('#tt').tabs({
+				onSelect: function(title,index){
+					index = index-1;
+					console.log("Select tab:"+index);
+					tabSelected(index);
+				}
+			});
+			serverLog = document.getElementById("serverLog");
+			loadParties();
+			loadSubscriptions();
+			pollLogs();
+			updateSubscriptionTable();
+			updateSessionTable();
+			tabSelected(0);
+			changeTemplateVector[0] = changeTemplatePRS;
+			changeTemplateVector[1] = changeTemplatePRS;
+			changeTemplateVector[2] = changeTemplatePRS;
+			changeTemplateVector[3] = changeTemplatePRS;
+			changeTemplateVector[4] = changeTemplatePCM;
+			changeTemplateVector[5] = changeTemplatePCM;
+		}
+	});
+
+
+	//$("#mainLayout").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
+
 }
 
 
@@ -319,7 +328,7 @@ function sendMsg(method) {
 	var data = document.getElementById(reqBodyName).value;
 	currentMethod = method;
 	var contentType = "application/json";
-	
+
 	$.ajax({
 		beforeSend : function(req) {
 			req.setRequestHeader("Accept", "application/json");
@@ -337,21 +346,23 @@ function sendMsg(method) {
 }
 
 function load(key) {
-    if (window.localStorage) {
-    	return window.localStorage.getItem('com.alu.cts.'+key);
-    }
-    else return null;
+	if (window.localStorage) {
+		return window.localStorage.getItem('com.alu.cts.'+key);
+	}
+	else {
+		return null;
+	}
 }
 
 function save(key,value)
 {
-    if (window.localStorage) {
-        localStorage.setItem('com.alu.cts.'+key, value);
-    }
+	if (window.localStorage) {
+		localStorage.setItem('com.alu.cts.'+key, value);
+	}
 }
 
 function loadParties() {
-	if (load("partyA") != null) {
+	if (load("partyA") !== null) {
 		document.getElementById("partyA0").value = load("partyA");
 		document.getElementById("partyA1").value = load("partyA");
 		document.getElementById("partyA2").value = load("partyA");
@@ -360,13 +371,13 @@ function loadParties() {
 		document.getElementById("partyA5").value = load("partyA");
 
 	}
-	if(load("partyB") != null) {
+	if(load("partyB") !== null) {
 		document.getElementById("partyB0").value = load("partyB");
 		document.getElementById("partyB1").value = load("partyB");
 		document.getElementById("partyB2").value = load("partyB");
 		document.getElementById("partyB3").value = load("partyB");
 	}
-	if(load("partyC") != null) {
+	if(load("partyC") !== null) {
 		document.getElementById("partyC0").value = load("partyC");
 		document.getElementById("partyC1").value = load("partyC");
 		document.getElementById("partyC2").value = load("partyC");
@@ -378,9 +389,9 @@ function saveParties() {
 	var partyAval = document.getElementById("partyA"+tabIndex).value;
 	var partyBval = document.getElementById("partyB"+tabIndex).value;
 	var partyCval = document.getElementById("partyC"+tabIndex).value;
-    save("partyA",partyAval);
-    save("partyB",partyBval);
-    save("partyC",partyCval);
+	save("partyA",partyAval);
+	save("partyB",partyBval);
+	save("partyC",partyCval);
 }
 
 function loadSubscriptions() {
@@ -401,16 +412,16 @@ function loadSubscriptions() {
 		lastCall = "";
 	// Not sure what to do if Ids are no longer valid
 	save("callNotifId","");
-    save("callDirectionId","");
-    save("digitCollectionId","");
-    save("callSessionId","");
+	save("callDirectionId","");
+	save("digitCollectionId","");
+	save("callSessionId","");
 }
 
 function saveSubscriptions() {
-    save("callNotifId",lastNotification);
-    save("callDirectionId",lastDirection);
-    save("digitCollectionId",lastDigitCollection);
-    save("callSessionId",lastCall);
+	save("callNotifId",lastNotification);
+	save("callDirectionId",lastDirection);
+	save("digitCollectionId",lastDigitCollection);
+	save("callSessionId",lastCall);
 }
 
 
@@ -432,7 +443,7 @@ function changePartyText(cmd, key) {
 			break;
 		default:
 			$('#'+partyAdivtext).text("Calling Address");
-		    $('#'+partyCdivtext).text("Calling Address");
+		$('#'+partyCdivtext).text("Calling Address");
 		}
 		break;
 	case  'CallSessionParticipants':
@@ -441,7 +452,7 @@ function changePartyText(cmd, key) {
 		break;
 	default:
 		$('#'+partyAdivtext).text("Calling Address");
-	    $('#'+partyCdivtext).text("Calling Address");
+	$('#'+partyCdivtext).text("Calling Address");
 	}
 }
 
@@ -462,13 +473,13 @@ function hideShowParty(id)
 function changeTemplatePRS(e, cmd,key)
 {
 	tabCmdSelected[tabIndex]  = {e:e, cmd:cmd, key:key};
-	
+
 	console.log("name = "+e);
 	$("a").removeClass("selected");
-    e.classList.add("selected");
-    
-    currentSelection = cmd;
-    
+	e.classList.add("selected");
+
+	currentSelection = cmd;
+
 	document.getElementById(postButton).disabled = true;
 	document.getElementById(getButton).disabled = true;
 	document.getElementById(delButton).disabled = true;		
@@ -492,12 +503,12 @@ function changeTemplatePRS(e, cmd,key)
 		break;
 	default:
 		document.getElementById(postButton).disabled = false;
-	    currentTemplate = key;
-	    updateTemplate();
-	    genClientCorrelator();
-	    if (document.getElementById(events) != null) {
-			document.getElementById(events).style.display = "inline";
-		}
+	currentTemplate = key;
+	updateTemplate();
+	genClientCorrelator();
+	if (document.getElementById(events) != null) {
+		document.getElementById(events).style.display = "inline";
+	}
 	}
 	changePartyText(cmd, key);
 	hideShowParty("partyA");
@@ -505,19 +516,19 @@ function changeTemplatePRS(e, cmd,key)
 	hideShowParty("partyC");
 	currentCmd = urlArray[cmd];
 	updateCommand();
-	
+
 }
 
 function changeTemplatePCM(e, cmd,key)
 {
 	tabCmdSelected[tabIndex]  = {e:e, cmd:cmd, key:key};
-	
+
 	console.log("name = "+e);
 	$("a").removeClass("selected");
-    e.classList.add("selected");
-    
-    currentSelection = cmd;
-    
+	e.classList.add("selected");
+
+	currentSelection = cmd;
+
 	document.getElementById(postButton).disabled = true;
 	document.getElementById(getButton).disabled = true;
 	document.getElementById(delButton).disabled = true;		
@@ -527,25 +538,25 @@ function changeTemplatePCM(e, cmd,key)
 		currentTemplate = "";
 		document.getElementById(getButton).disabled = false;
 		if (document.getElementById(reqBodyName) !=undefined)
-		    document.getElementById(reqBodyName).value = "";
+			document.getElementById(reqBodyName).value = "";
 		$('#'+cmdLayout).layout('collapse','west');
 		break;
 	case  'delete':
 		currentTemplate = "";
 		document.getElementById(delButton).disabled = false;
 		if (document.getElementById(reqBodyName) !=undefined)
-		    document.getElementById(reqBodyName).value = "";
+			document.getElementById(reqBodyName).value = "";
 		$('#'+cmdLayout).layout('collapse','west');
 		break;
 	default:
 		$('#'+cmdLayout).layout('expand','west');
-	    document.getElementById(reqBodyName).value = communicationSettings;
-		document.getElementById(replyName).value = "";
-		document.getElementById(postButton).disabled = false;
-	    currentTemplate = key;
-	    updateTemplatePCM();
-	    genClientCorrelator();
-	    
+	document.getElementById(reqBodyName).value = communicationSettings;
+	document.getElementById(replyName).value = "";
+	document.getElementById(postButton).disabled = false;
+	currentTemplate = key;
+	updateTemplatePCM();
+	genClientCorrelator();
+
 	}
 	document.getElementById("partyAdiv"+tabIndex).style.display="inline";
 	currentCmd = urlArray[cmd];
@@ -600,7 +611,7 @@ function addDirectionJson(template,id)
 }
 
 function updateTemplatePCM() {
-	
+
 }
 
 function updateTemplate()
@@ -625,7 +636,7 @@ function updateTemplate()
 	{
 		var criteria = "";
 		if (currentSelection != 'NotifSubscriptionCallDirection')
-		    criteria = addEventJson(criteria,'Answer');
+			criteria = addEventJson(criteria,'Answer');
 		criteria = addEventJson(criteria,'Busy');
 		criteria = addEventJson(criteria,'NotReachable');
 		criteria = addEventJson(criteria,'NoAnswer');
@@ -633,10 +644,10 @@ function updateTemplate()
 		criteria = addEventJson(criteria,'CalledNumber');
 		if (criteria.charAt(criteria.length - 1) == ',') {
 			criteria = criteria.substr(0, criteria.length - 1);
-			}
+		}
 		template = template.replace('{criteria}', criteria);
 		if (currentSelection != 'NotifSubscriptionCallDirection')
-		    template = addDirectionJson(template,'Called');
+			template = addDirectionJson(template,'Called');
 		else 
 			template = template.replace('{direction}', 'Called');
 	} 
@@ -651,7 +662,7 @@ function updateTemplate()
 	document.getElementById(reqBodyName).value = data;
 }
 function genClientCorrelator() {
-    clientCorrelator = Math.round(Math.random()*10000);
+	clientCorrelator = Math.round(Math.random()*10000);
 }
 
 function updateCommand()
@@ -672,17 +683,17 @@ function updateCommand()
 		cmd = cmd.replace('{digitId}', lastDigitCollection);	
 	console.log("partyId = "+partyId);
 	if (partyId != "")
-	    cmd = cmd.replace('{partyId}', partyId);
+		cmd = cmd.replace('{partyId}', partyId);
 	if (puid != "")
-	    cmd = cmd.replace('{puid}', puid);
+		cmd = cmd.replace('{puid}', puid);
 	if (access_token != undefined)
-	    cmd = cmd.replace('{access_token}', access_token);
+		cmd = cmd.replace('{access_token}', access_token);
 	console.log("cmd="+ cmd);
-	
-	if (server.indexOf('http') >= 0)
-		cmd = server + "/" + cmd;
+
+	if (serverData.server.indexOf('http') >= 0)
+		cmd = serverData.server + "/" + cmd;
 	else
-		cmd = "http://" + server + "/" + cmd;
+		cmd = "http://" + serverData.server + "/" + cmd;
 
 	console.log("queryName="+ queryName);
 	document.getElementById(queryName).value = cmd;
@@ -720,44 +731,44 @@ function onReply(xhr, status) {
 		}
 	}
 	document.getElementById(replyName).value = xhr.getAllResponseHeaders() + "\n"
-			+ xhr.statusText + "\n" + xhr.status + " " + errorMsg[xhr.status]
-			+ "\n" + str;
-    if (str.length > 0) {
-    	if (!tmpJsonFlag) {  
-    		var jsonObj = x2js.xml2json(str);
-    		str = x2js.json2xml_str(jsonObj);
-    	}
-    	console.log(str);
-        var obj = JSON.parse(str);
-    	processJson(obj);
-    }
-    if (((currentMethod == "DELETE") &&(status == "success")) ||
-    	((currentMethod == "DELETE") &&(xhr.status == 204)) ||
-    	((currentMethod == "GET") &&(xhr.status == 404))	) {  // DELETE Success || GET not found
-    	var cmd = document.getElementById(queryName).value;
-    	if ((lastNotification.length >0) && (cmd.indexOf(lastNotification) != -1)) {
-    		lastNotification = "";
-    	}
-    	if ((lastDirection.length >0) && (cmd.indexOf(lastDirection) != -1)) {
-    		lastDirection = "";
-    	}
-    	if ((lastDigitCollection.length >0) && (cmd.indexOf(lastDigitCollection) != -1)) {
-    		lastDigitCollection = "";
-    	}
-    	if ((lastCall.length >0) && (cmd.indexOf(lastCall) != -1)) {
-    		if (cmd.indexOf("participants") == -1) {
-    	   		lastCall = "";
-        		partyId = "";
-    		}
- 
-    	}
-    	updateSubscriptionTable();
-    	updateSessionTable();
-    	updateCommand();
-    } else {
-    	updateSubscriptionTable();
-    	updateSessionTable();
-    }
+	+ xhr.statusText + "\n" + xhr.status + " " + errorMsg[xhr.status]
+	+ "\n" + str;
+	if (str.length > 0) {
+		if (!tmpJsonFlag) {  
+			var jsonObj = x2js.xml2json(str);
+			str = x2js.json2xml_str(jsonObj);
+		}
+		console.log(str);
+		var obj = JSON.parse(str);
+		processJson(obj);
+	}
+	if (((currentMethod == "DELETE") &&(status == "success")) ||
+			((currentMethod == "DELETE") &&(xhr.status == 204)) ||
+			((currentMethod == "GET") &&(xhr.status == 404))	) {  // DELETE Success || GET not found
+		var cmd = document.getElementById(queryName).value;
+		if ((lastNotification.length >0) && (cmd.indexOf(lastNotification) != -1)) {
+			lastNotification = "";
+		}
+		if ((lastDirection.length >0) && (cmd.indexOf(lastDirection) != -1)) {
+			lastDirection = "";
+		}
+		if ((lastDigitCollection.length >0) && (cmd.indexOf(lastDigitCollection) != -1)) {
+			lastDigitCollection = "";
+		}
+		if ((lastCall.length >0) && (cmd.indexOf(lastCall) != -1)) {
+			if (cmd.indexOf("participants") == -1) {
+				lastCall = "";
+				partyId = "";
+			}
+
+		}
+		updateSubscriptionTable();
+		updateSessionTable();
+		updateCommand();
+	} else {
+		updateSubscriptionTable();
+		updateSessionTable();
+	}
 }
 
 function processJson(body) {
@@ -765,7 +776,7 @@ function processJson(body) {
 		if (body.subId != undefined) {
 			lastNotification = body.subId;
 		}
-		
+
 	} else if (currentCmd.indexOf('calldirections') != -1) {
 		if (body.subId != undefined) {
 			lastDirection = body.subId;
@@ -788,12 +799,12 @@ function processXml(xml)
 		resource = xml.find("resourceURL");
 	}
 	if(resource.length <=0) return;
-	
+
 	var msgType = xml.find("callSessionInformation");
 	if(msgType.length >0)
 	{
 		var index = 0;
-	
+
 		var sessionId = resource.eq(resource.length-1).text().split('callSessions/');
 		lastCall = sessionId[1];
 		party = [];
@@ -814,12 +825,12 @@ function processXml(xml)
 			}
 		});
 	}
-	
+
 	msgType = xml.find("callParticipantList");
 	if(msgType.length >0)
 	{
 		var index = 0;
-	
+
 		var sessionId = resource.eq(resource.length-1).text().split('callSessions/');
 		lastCall = sessionId[1];
 		var token = lastCall.split('/');
@@ -874,25 +885,25 @@ function processXml(xml)
 	{
 		var token = resource.eq(0).text().split('callEvent/');
 		if (token[1] != undefined)
-		    lastNotification = token[1];
+			lastNotification = token[1];
 	}
-	
+
 	msgType = xml.find("callDirectionSubscription");
 	if(msgType.length >0)
 	{
 		var token = resource.eq(0).text().split('callDirection/');
 		if (token[1] != undefined)
-		    lastDirection = token[1];
+			lastDirection = token[1];
 	}	
-	
+
 	msgType = xml.find("playAndCollectInteractionSubscription");
 	if(msgType.length >0)
 	{
 		var token = resource.eq(0).text().split('collection/');
 		if (token[1] != undefined)
-		    lastDigitCollection = token[1];
+			lastDigitCollection = token[1];
 	}	
-	
+
 }
 
 function updateSubscriptionTable()
@@ -974,8 +985,8 @@ function onLogs(txt) {
 		serverLog.value += "\n";
 		serverLog.scrollTop = serverLog.scrollHeight;
 	}
-	
-	
+
+
 	pollLogs();
 }
 
@@ -990,50 +1001,50 @@ function selectWord(event) {
 	event = event || window.event;
 
 	var textarea = event.target;
-    var caret = getCaretPosition(textarea);
-    var text = textarea.value;
-    var begin = caret - 1;
-    while (begin >= 0) {
-        if (isSeparator(text.charAt(begin))) break;
-        else begin--;
-    }
+	var caret = getCaretPosition(textarea);
+	var text = textarea.value;
+	var begin = caret - 1;
+	while (begin >= 0) {
+		if (isSeparator(text.charAt(begin))) break;
+		else begin--;
+	}
 
-    if (begin >= -1) {
-        var end = caret;
-        while (end < text.length) {
-            if (isSeparator(text.charAt(end))) break;
-            else end++;
-        }
+	if (begin >= -1) {
+		var end = caret;
+		while (end < text.length) {
+			if (isSeparator(text.charAt(end))) break;
+			else end++;
+		}
 
-        if (end < text.length)
-            setSelection(textarea, begin+1, end-1);
-    }
+		if (end < text.length)
+			setSelection(textarea, begin+1, end-1);
+	}
 }
 
 function getCaretPosition(el) {
-    if (el.selectionStart) {
-        return el.selectionStart;
-    } else if (document.selection) {
-        var r = document.selection.createRange();
-        if (r == null) return 0;
-        var re = el.createTextRange();
-        var rc = re.duplicate();
-        re.moveToBookmark(r.getBookmark());
-        rc.setEndPoint('EndToStart', re);
-        return rc.text.length;
-    }
-    return 0; 
+	if (el.selectionStart) {
+		return el.selectionStart;
+	} else if (document.selection) {
+		var r = document.selection.createRange();
+		if (r == null) return 0;
+		var re = el.createTextRange();
+		var rc = re.duplicate();
+		re.moveToBookmark(r.getBookmark());
+		rc.setEndPoint('EndToStart', re);
+		return rc.text.length;
+	}
+	return 0; 
 }
 
 function setSelection(el, begin, end) {
-    if ("selectionStart" in el) {
-        el.selectionStart = begin;
-        el.selectionEnd = end + 1;
-    } else if (document.selection) {
-        var range = el.createTextRange();
-        range.collapse(true);
-        range.moveEnd('character', end + 1);
-        range.moveStart('character', begin);
-        range.select();
-    }
+	if ("selectionStart" in el) {
+		el.selectionStart = begin;
+		el.selectionEnd = end + 1;
+	} else if (document.selection) {
+		var range = el.createTextRange();
+		range.collapse(true);
+		range.moveEnd('character', end + 1);
+		range.moveStart('character', begin);
+		range.select();
+	}
 }
