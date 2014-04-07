@@ -8,7 +8,9 @@ var lastDigitCollection = "";
 var clientCorrelator = 0;
 var party = [];
 var partyId = '';
-var puid;
+var puid = '';
+var pageIndex = '1';
+var pageSize = '50';
 var currentMethod = '';
 var x2js = new X2JS();
 var currentSelection = "";
@@ -96,27 +98,57 @@ var callDirectionActions = {
 console.log("Domain = "+ document.domain);
 
 var urlAtt = {};
-urlAtt['CallSession'] = 'ParlayREST/thirdpartycall/v1/callSessions';
+urlAtt['CallSession'] = 'ParlayREST/thirdpartycall/v1/callSessions?access_token={access_token}';
 urlAtt['CallSessionParticipants'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants';
 urlAtt['CallSessionParty'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants/{partyId}';
 urlAtt['CallSessionCallId'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}';
 
-urlAtt['NotifSubscriptionCallEvent'] = '/callevents?access_token={access_token}';
-urlAtt['NotifSubscriptionCallEventNotifId'] = '/callevents/{notificationId}?access_token={access_token}';
+urlAtt['EventNotification'] = 'event/notification?access_token={access_token}';
+urlAtt['EventNotificationId'] = 'event/notification/{notificationId}?access_token={access_token}';
 
-urlAtt['NotifSubscriptionCallDirection'] = '/calldirections?access_token={access_token}';
-urlAtt['NotifSubscriptionCallDirectionDirectionId'] = '/calldirections/{directionId}?access_token={access_token}';
+urlAtt['EventDirection'] = 'event/direction?access_token={access_token}';
+urlAtt['EventDirectionId'] = 'event/direction/{directionId}?access_token={access_token}';
 
-urlAtt['NotifSubscriptionCollection'] = 'ParlayREST/callnotification/v1/subscriptions/collection';
-urlAtt['NotifSubscriptionCollectionDigitId'] = 'ParlayREST/callnotification/v1/subscriptions/collection/{digitId}';
-urlAtt['AudioCallMsgText'] = 'ParlayREST/audiocall/v1/messages/text';
-urlAtt['AudioCallMsgAudio'] = 'ParlayREST/audiocall/v1/messages/audio';
-urlAtt['AudioCallMsgVideo'] = 'ParlayREST/audiocall/v1/messages/video';
-urlAtt['AudioCallInteractCollection'] = 'ParlayREST/audiocall/v1/interactions/collection';
-urlAtt['UserCapabilities'] = 'selfcare/1.0/capabilities/{puid}';
-urlAtt['UserSettings'] = 'selfcare/1.0/settings/{puid}';
-urlAtt['CallLogs'] = 'selfcare/1.0/callLog/{puid}';
+urlAtt['PlayCollectSubscription'] = 'ui/playcollect?access_token={access_token}';
+urlAtt['PlayCollectSubscriptionId'] = 'ui/playcollect/{playCollectSubId}?access_token={access_token}';
 
+urlAtt['AudioCallMsgText'] = 'ui/text?access_token={access_token}';
+urlAtt['AudioCallMsgAudio'] = 'ui/audio?access_token={access_token}';
+urlAtt['AudioCallMsgVideo'] = 'ui/video?access_token={access_token}';
+
+urlAtt['DigitInteractCollection'] = 'ui/playcollect/digit?access_token={access_token}';
+urlAtt['RecordInteractCollection'] = 'ui/playcollect/record?access_token={access_token}';
+
+
+urlAtt['UserCapabilities'] = 'selfcare/1.0/capabilities/{puid}?access_token={access_token}';
+urlAtt['UserSettings'] = 'selfcare/1.0/settings/{puid}?access_token={access_token}';
+urlAtt['CallLogs'] = 'selfcare/1.0/callLog/{puid}/{pgIdx}/{pgSize}?access_token={access_token}';
+urlAtt['DeleteCallLog'] = 'selfcare/1.0/callLog/{puid}?access_token={access_token}';
+
+var urlOrig = {};
+urlOrig['CallSession'] = 'ParlayREST/thirdpartycall/v1/callSessions';
+urlOrig['CallSessionParticipants'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants';
+urlOrig['CallSessionParty'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants/{partyId}';
+urlOrig['CallSessionCallId'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}';
+
+urlOrig['EventNotification'] = '/ParlayREST/callnotification/v1/subscriptions/callEvent?access_token={access_token}';
+urlOrig['EventNotificationId'] = '/ParlayREST/callnotification/v1/subscriptions/callEvent/{notificationId}?access_token={access_token}';
+
+urlOrig['EventDirection'] = '/ParlayREST/callnotification/v1/subscriptions/callDirection?access_token={access_token}';
+urlOrig['EventDirectionId'] = '/ParlayREST/callnotification/v1/subscriptions/callDirection/{directionId}?access_token={access_token}';
+
+urlOrig['PlayCollectSubscription'] = 'ParlayREST/callnotification/v1/subscriptions/collection';
+urlOrig['PlayCollectSubscriptionId'] = 'ParlayREST/callnotification/v1/subscriptions/collection/{playCollectSubId}';
+urlOrig['AudioCallMsgText'] = 'ParlayREST/audiocall/v1/messages/text';
+urlOrig['AudioCallMsgAudio'] = 'ParlayREST/audiocall/v1/messages/audio';
+urlOrig['AudioCallMsgVideo'] = 'ParlayREST/audiocall/v1/messages/video';
+urlOrig['DigitInteractCollection'] = 'ParlayREST/audiocall/v1/interactions/collection';
+urlOrig['RecordInteractCollection'] = 'ParlayREST/audiocall/v1/interactions/collection';
+urlOrig['UserCapabilities'] = 'selfcare/1.0/capabilities/{puid}';
+urlOrig['UserSettings'] = 'selfcare/1.0/settings/{puid}';
+urlOrig['CallLogs'] = 'selfcare/1.0/callLog/{puid}';
+urlOrig['CallLogs'] = 'selfcare/1.0/callLog/{puid}/{pgIdx}/{pgSize}?access_token={access_token}';
+urlOrig['DeleteCallLog'] = 'selfcare/1.0/callLog/{puid}?access_token={access_token}';
 
 
 var urlArray = urlAtt;
@@ -150,58 +182,53 @@ jsondata['addPartyMsg'] = '{"callParticipantInformation": {'
 	+ '}}';
 
 jsondata['textMsg'] = 
-	'{"textMessage": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"callSessionIdentifier": "{callId}",'
-	+ '"callParticipant": [ "{partyB}" ],'
-	+ '"text": "http://{domain}:8080/ApiTest/test1.txt"'
-	+ '}}';
+	'{'
+	+ '"callSessionId": "{callId}",'
+	+ '"address": "{partyB}",'
+	+ '"mediaURL": "http://{domain}:8080/ApiTest/test1.txt"'
+	+ '}';
 
-jsondata['audioMsg'] = '{"audioMessage": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"callSessionIdentifier": "{callId}",'
-	+ '"callParticipant": [ "{partyB}" ],'
+jsondata['audioMsg'] = 
+	'{'
+	+ '"callSessionId": "{callId}",'
+	+ '"address": "{partyB}",'
 	+ '"mediaType": "audio/mpeg",'
-	+ '"mediaUrl": "http://{domain}:8080/ApiTest/ann1.mp3"'
-	+ '}}';
+	+ '"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3"'
+	+ '}';
 
-jsondata['videoMsg'] = '{"videoMessage": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"callSessionIdentifier": "{callId}",'
-	+ '"callParticipant": [ "{partyB}" ],'
-	+ '"mediaType": "video.mp4",'
-	+ '"mediaUrl": "http://{domain}:8080/ApiTest/video.mp4"'
-	+ '}}';
+jsondata['videoMsg'] = 
+	'{'
+	+ '"callSessionId": "{callId}",'
+	+ '"address": "{partyB}",'
+	+ '"mediaType": "video/mp4",'
+	+ '"mediaURL": "http://{domain}:8080/ApiTest/video.mp4"'
+	+ '}';
 
-jsondata['collectDigitsMsg'] = '{"digitCapture": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"callSessionIdentifier": "{callId}",'
-	+ '"callbackReference": { "notifyURL":"http://{domain}:8080/ApiTest/Servlet/digitsNotification", "notificationFormat": "JSON" }'
-	+ '}}';
+jsondata['collectDigitsMsg'] = '{'
+	+ '"callSessionId": "{callId}",'
+	+ '"address": "{partyB}",'
+	+ '"mediaType": "audio/mpeg",'
+	+ '"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3",'
+	+ '"interruptMedia": "true",'
+	+ '"maxDigits": "1",'
+	+ '"minDigits": "1",'
+	+ '"endChar": "*"'
+	+ '}';
 
-jsondata['registerDigitsMsg'] = '{"playAndCollectInteractionSubscription": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"callSessionIdentifier": "{callId}",'
-	+ '"callParticipant": [ "{partyB}" ],'
-	+ '"playingConfiguration": { '
-	+ ' "playFileLocation":"http://{domain}:8080/ApiTest/ann1.mp3",'
-	+ ' "messageFormat":"Audio",'
-	+ ' "mediaType":"audio/mpeg",'
-	+ ' "interruptMedia":"true" },'
-	+ '"digitConfiguration": { '
-	+ ' "minDigits":"1",'
-	+ ' "maxDigits":"4",'
-	+ ' "interruptMedia":"false" }'
-	+ '}}';
+jsondata['createPlayCollectSub'] = 
+	'{'
+	+ '"callSessionId": "{callId}",'
+	+ '"notifyURL":"http://{domain}:8080/playCollect?id={msisdn}"'
+	+ '}';
 
 jsondata['callDirectionMsg'] = '{ "address": "{partyB}",'
 	+ '"notifyURL":"http://{domain}:8080/callDirection?id={msisdn}",'
-	+ '"criteria": [ {criteria} ]'
+	+ '"events": [ {criteria} ]'
 	+ '}';
 
 jsondata['registerMsg'] = '{ "address": "{partyB}",'
 	+ '"notifyURL":"http://{domain}:8080/callEvent?id={msisdn}",'
-	+ '"criteria": [ {criteria} ],' + '"direction":"{direction}"'
+	+ '"events": [ {criteria} ],' + '"direction":"{direction}"'
 	+ '}';
 
 
@@ -277,6 +304,7 @@ function init()
 	while (m = regex.exec(queryString)) {
 		oauthParams[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
 	}
+	console.log(oauthParams);
 	access_token = oauthParams['access_token'];
 	console.log("access_token = "+access_token);
 	$.getJSON( "config.json", function( data ) {
@@ -316,7 +344,7 @@ function init()
 	});
 
 
-	//$("#mainLayout").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
+	$("#cmdLayout0").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
 
 }
 
@@ -540,6 +568,8 @@ function changeTemplatePCM(e, cmd,key)
 		if (document.getElementById(reqBodyName) !=undefined)
 			document.getElementById(reqBodyName).value = "";
 		$('#'+cmdLayout).layout('collapse','west');
+		document.getElementById("pageIdxDiv").style.display="inline";
+		document.getElementById("pageSizeDiv").style.display="inline";
 		break;
 	case  'delete':
 		currentTemplate = "";
@@ -547,6 +577,8 @@ function changeTemplatePCM(e, cmd,key)
 		if (document.getElementById(reqBodyName) !=undefined)
 			document.getElementById(reqBodyName).value = "";
 		$('#'+cmdLayout).layout('collapse','west');
+		document.getElementById("pageIdxDiv").style.display="none";
+		document.getElementById("pageSizeDiv").style.display="none";
 		break;
 	default:
 		$('#'+cmdLayout).layout('expand','west');
@@ -635,7 +667,7 @@ function updateTemplate()
 
 	{
 		var criteria = "";
-		if (currentSelection != 'NotifSubscriptionCallDirection')
+		if (currentSelection != 'EventDirection')
 			criteria = addEventJson(criteria,'Answer');
 		criteria = addEventJson(criteria,'Busy');
 		criteria = addEventJson(criteria,'NotReachable');
@@ -646,7 +678,7 @@ function updateTemplate()
 			criteria = criteria.substr(0, criteria.length - 1);
 		}
 		template = template.replace('{criteria}', criteria);
-		if (currentSelection != 'NotifSubscriptionCallDirection')
+		if (currentSelection != 'EventDirection')
 			template = addDirectionJson(template,'Called');
 		else 
 			template = template.replace('{direction}', 'Called');
@@ -668,11 +700,18 @@ function genClientCorrelator() {
 function updateCommand()
 {
 	puid = document.getElementById(partyA).value;
+	pageSize = document.getElementById("pageSize").value;
+	pageIndex = document.getElementById("pageIdx").value;
+
 	var idx = puid.indexOf(':');  // Strip off sip: prefix.
 	if (idx != -1)
 		puid = puid.slice(idx+1);
 
 	var cmd  = currentCmd;
+	if(pageIndex.length >0)
+		cmd = cmd.replace('{pgIdx}', pageIndex);
+	if(pageSize.length >0)
+		cmd = cmd.replace('{pgSize}', pageSize);
 	if(lastCall.length >0)
 		cmd = cmd.replace('{callId}', lastCall);
 	if(lastNotification.length >0)
@@ -680,7 +719,7 @@ function updateCommand()
 	if(lastDirection.length >0)
 		cmd = cmd.replace('{directionId}', lastDirection);	
 	if(lastDigitCollection.length >0)
-		cmd = cmd.replace('{digitId}', lastDigitCollection);	
+		cmd = cmd.replace('{playCollectSubId}', lastDigitCollection);	
 	console.log("partyId = "+partyId);
 	if (partyId != "")
 		cmd = cmd.replace('{partyId}', partyId);
@@ -699,7 +738,10 @@ function updateCommand()
 	document.getElementById(queryName).value = cmd;
 }
 
-
+function updateUiLastCall() {
+	lastCall = document.getElementById('uiCallSession').value;
+	updateTemplate();
+}
 
 function directionChanged() {
 	updateTemplate();
@@ -760,8 +802,8 @@ function onReply(xhr, status) {
 				lastCall = "";
 				partyId = "";
 			}
-
 		}
+		communicationSettings = "";
 		updateSubscriptionTable();
 		updateSessionTable();
 		updateCommand();
@@ -772,14 +814,22 @@ function onReply(xhr, status) {
 }
 
 function processJson(body) {
-	if (currentCmd.indexOf('callevents') != -1) {
+	if (currentCmd.indexOf('event/notification') != -1) {
 		if (body.subId != undefined) {
 			lastNotification = body.subId;
 		}
 
-	} else if (currentCmd.indexOf('calldirections') != -1) {
+	} else if (currentCmd.indexOf('event/direction') != -1) {
 		if (body.subId != undefined) {
 			lastDirection = body.subId;
+		}
+	}  else if (currentCmd.indexOf('ui/playcollect') != -1) {
+		if (body.subId != undefined) {
+			lastDigitCollection = body.subId;
+		}
+	} else if (currentCmd.indexOf('/settings') != -1) {
+		if (body.CommunicationSettings != undefined) {
+			communicationSettings = JSON.stringify(body, null, 2);
 		}
 	}
 }
@@ -927,11 +977,11 @@ function updateSessionTable()
 		list+="</table>";
 		e.innerHTML = list;
 		document.getElementById('callSessionText').value = '';
-		document.getElementById('callSession3').value = '';
+		document.getElementById('uiCallSession').value = '';
 		return;
 	}
 	document.getElementById('callSessionText').value = lastCall;
-	document.getElementById('callSession3').value = lastCall;
+	document.getElementById('uiCallSession').value = lastCall;
 	var list ="<br><table class=\"center\">";
 	if (party.length > 0) {
 		list+="<thead><tr><th>Address</th><th>Status</th><th>Id</th></tr></thead>";
@@ -972,8 +1022,7 @@ function pollLogs() {
 }
 
 function clearLogs() {
-	//var cmd = "Servlet/clearLogs?_=" + Math.random();
-	//jQuery.get(cmd);
+	serverLog.value = "";
 }
 
 

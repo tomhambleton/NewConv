@@ -69,7 +69,12 @@ console.log(req.body);
 res.send(200);
 });
 app.post('/callEvent', function(req,res) {
-	var str = "CALL NOTIFCATION EVENT: \n"+ JSON.stringify(req.body, null, 2);
+	var str = "CALL NOTIFICATION EVENT: \n"+ JSON.stringify(req.body, null, 2);
+	logger.logMsg(str);
+	res.send(200);
+});
+app.post('/playCollect', function(req,res) {
+	var str = " EVENT: \n"+ JSON.stringify(req.body, null, 2);
 	logger.logMsg(str);
 	res.send(200);
 });

@@ -185,14 +185,11 @@
 								style="height: 130px">
 								<ul id="notification" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallEvent','registerMsg')">Create
-											subscription</a></li>
+										onClick="changeTemplate(this, 'EventNotification','registerMsg')">Create subscription</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','get')">Retrieve
-											subscription info</a></li>
+										onClick="changeTemplate(this, 'EventNotificationId','get')">Retrieve subscription info</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallEventNotifId','delete')">Remove
-											subscription</a></li>
+										onClick="changeTemplate(this, 'EventNotificationId','delete')">Remove subscription</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton0" disabled='disabled'
@@ -291,14 +288,11 @@
 								style="height: 130px">
 								<ul id="direction" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallDirection','callDirectionMsg')">Create
-											subscription</a></li>
+										onClick="changeTemplate(this, 'EventDirection','callDirectionMsg')">Create subscription</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','get')">Retrieve
-											subscription info</a></li>
+										onClick="changeTemplate(this, 'EventDirectionId','get')">Retrieve subscription info</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCallDirectionDirectionId','delete')">Remove
-											subscription</a></li>
+										onClick="changeTemplate(this, 'EventDirectionId','delete')">Remove subscription</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton1" disabled='disabled'
@@ -392,32 +386,23 @@
 								style="height: 230px">
 								<ul id="call" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSession','callMsg')">Click
-											to dial</a></li>
+										onClick="changeTemplate(this, 'CallSession','callMsg')">Click to dial</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSession','callExtMsg')">Click
-											to dial from any party</a></li>
+										onClick="changeTemplate(this, 'CallSession','callExtMsg')">Click to dial from any party</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSession','callAnnouncementMsg')">Click
-											to dial with announcement</a></li>
+										onClick="changeTemplate(this, 'CallSession','callAnnouncementMsg')">Click to dial with announcement</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionParticipants','addPartyMsg')">Add
-											participant to a call</a></li>
+										onClick="changeTemplate(this, 'CallSessionParticipants','addPartyMsg')">Add participant to a call</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionParty','delete')">Remove
-											participant from call</a></li>
+										onClick="changeTemplate(this, 'CallSessionParty','delete')">Remove participant from call</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionParty','get')">Retrieve
-											participant info in call</a></li>
+										onClick="changeTemplate(this, 'CallSessionParty','get')">Retrieve participant info in call</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionParticipants', 'get')">Retrieve
-											list of participants in call</a></li>
+										onClick="changeTemplate(this, 'CallSessionParticipants', 'get')">Retrieve list of participants in call</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionCallId', 'get')">Retrieve
-											call session info</a></li>
+										onClick="changeTemplate(this, 'CallSessionCallId', 'get')">Retrieve call session info</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallSessionCallId','delete')">Remove
-											call session</a></li>
+										onClick="changeTemplate(this, 'CallSessionCallId','delete')">Remove call session</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton2" disabled='disabled'
@@ -432,22 +417,19 @@
 								style="padding: 5px;">
 								<form id="parties2" action="">
 									<div id='partyAdiv2' style="display: none;">
-										<div id="partyAdivtext2" style="display: inline;">Calling
-											Address</div>
+										<div id="partyAdivtext2" style="display: inline;">Calling Address</div>
 										<input style="width: 250px" id="partyA2" type="text"
 											value="sip:+14692294727@foundry.att.com"
 											onKeyUp="updateTemplate()">
 									</div>
 									<div id="partyBdiv2" style="display: none;">
-										<div id="partyBdivtext2" style="display: inline;">Called
-											Address</div>
+										<div id="partyBdivtext2" style="display: inline;">Called Address</div>
 										<input style="width: 250px" id="partyB2" type="text"
 											value="sip:+14692294728@foundry.att.com"
 											onKeyUp="updateTemplate()">
 									</div>
 									<div id="partyCdiv2" style="display: none;">
-										<div id="partyCdivtext2" style="display: inline;">Calling
-											Address</div>
+										<div id="partyCdivtext2" style="display: inline;">Calling Address</div>
 										<input style="width: 250px" id="partyC2" type="text"
 											value="tel:+18007718734" onKeyUp="updateTemplate()">
 									</div>
@@ -501,26 +483,25 @@
 								style="height: 190px">
 								<ul id="userinteraction" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'AudioCallMsgText','textMsg')">Play
-											a text message</a></li>
+										onClick="changeTemplate(this, 'AudioCallMsgText','textMsg')">Play text message</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'AudioCallMsgAudio','audioMsg')">Play
-											an audio message</a></li>
+										onClick="changeTemplate(this, 'AudioCallMsgAudio','audioMsg')">Play audio message</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'AudioCallMsgVideo','videoMsg')">Play
-											a video message</a></li>
+										onClick="changeTemplate(this, 'AudioCallMsgVideo','videoMsg')">Play video message</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCollection','registerDigitsMsg')">Create
-											a collect digits subscription</a></li>
+										onClick="changeTemplate(this, 'PlayCollectSubscription','createPlayCollectSub')">Create play and collect subscription</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'AudioCallInteractCollection','collectDigitsMsg')">Play
-											media and collect digits</a></li>
+										onClick="changeTemplate(this, 'DigitInteractCollection','collectDigitsMsg')">Create play and collect digit interaction</a></li>
+									<!-- 
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','get')">Retrieve
-											collect digits subscription info</a></li>
+										onClick="changeTemplate(this, 'RecordInteractCollection','recordVoiceMsg')">Create play and record voice interaction</a></li>
+										
+									 -->	
+									
 									<li><a href="#"
-										onClick="changeTemplate(this, 'NotifSubscriptionCollectionDigitId','delete')">Remove
-											collect digits subscription</a></li>
+										onClick="changeTemplate(this, 'PlayCollectSubscriptionId','get')">Retrieve play and collect subscription info</a></li>
+									<li><a href="#"
+										onClick="changeTemplate(this, 'PlayCollectSubscriptionId','delete')">Remove play and collect subscription</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton3" disabled='disabled'
@@ -535,10 +516,9 @@
 								style="padding: 5px;">
 								<form id="parties3" action="">
 									<div id='callSessiondiv3' style="display: inline;">
-										<div id="callSessiondivtext3" style="display: inline;">Call
-											Session</div>
-										<input style="width: 270px" id="callSession3" type="text"
-											value="" onKeyUp="updateTemplate()">
+										<div id="callSessiondivtext3" style="display: inline;">Call Session</div>
+										<input style="width: 270px" id="uiCallSession" type="text"
+											value="" onKeyUp="updateTemplate()" onChange="updateUiLastCall()">
 									</div>
 									<div id='partyAdiv3' style="display: none;">
 										<div id="partyAdivtext3" style="display: inline;">Address</div>
@@ -574,7 +554,7 @@
 									cols="" rows=""></textarea>
 							</div>
 							<div id="active3"
-								data-options="region:'center',title:'Digit Collection Subscription Info'"
+								data-options="region:'center',title:'User Interaction Identifiers'"
 								style="padding-top: 10px;">
 								<div style="width: 450px; margin: 0 auto;">
 									<label style="margin-left: 10px;">Subscription Id:<input
@@ -605,14 +585,11 @@
 								style="height: 130px">
 								<ul id="usersettingstestcases" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'UserCapabilities','get')">Retrieve
-											capabilities</a></li>
+										onClick="changeTemplate(this, 'UserCapabilities','get')">Retrieve capabilities</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'UserSettings','get')">Retrieve
-											settings</a></li>
+										onClick="changeTemplate(this, 'UserSettings','get')">Retrieve settings</a></li>
 									<li><a href="#"
-										onClick="changeTemplate(this, 'UserSettings','post')">Modify
-											settings</a></li>
+										onClick="changeTemplate(this, 'UserSettings','post')">Modify settings</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton4" disabled='disabled'
@@ -680,8 +657,9 @@
 								style="height: 110px">
 								<ul id="calllogstextcases" class="test_cases">
 									<li><a href="#"
-										onClick="changeTemplate(this, 'CallLogs','get')">Retrieve
-											call logs</a></li>
+										onClick="changeTemplate(this, 'CallLogs','get')">Retrieve call logs</a></li>
+										<li><a href="#"
+										onClick="changeTemplate(this, 'DeleteCallLog','delete')">Delete call log</a></li>
 								</ul>
 								<div style="text-align: center; width: 75%; margin: 0 auto;">
 									<button id="postButton5" disabled='disabled'
@@ -695,6 +673,18 @@
 							<div data-options="region:'center',title:'Parameters'"
 								style="padding: 5px;">
 								<form id="parties5" action="">
+								    <div id='pageIdxDiv' style="display: none;">
+										<div style="display: inline;">Page Index</div>
+										<input style="width: 250px" id="pageIdx" type="text"
+											value="1"
+											onKeyUp="updateCommand()">
+									</div>
+									<div id='pageSizeDiv' style="display: none;">
+										<div style="display: inline;">Page Size</div>
+										<input style="width: 250px" id="pageSize" type="text"
+											value="50"
+											onKeyUp="updateCommand()">
+									</div>
 									<div id='partyAdiv5' style="display: none;">
 										<div id="partyAdivtext5" style="display: inline;">Address</div>
 										<input style="width: 250px" id="partyA5" type="text"
