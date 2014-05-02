@@ -74,7 +74,7 @@ app.post('/callEvent', function(req,res) {
 	res.send(200);
 });
 app.post('/playCollect', function(req,res) {
-	var str = " EVENT: \n"+ JSON.stringify(req.body, null, 2);
+	var str = "PLAY/COLLECT EVENT: \n"+ JSON.stringify(req.body, null, 2);
 	logger.logMsg(str);
 	res.send(200);
 });

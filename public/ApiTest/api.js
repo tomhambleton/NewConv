@@ -45,7 +45,6 @@ var communicationSettings = "";
 
 var changeTemplateVector = [];
 
-
 //Properties should match associated div names
 
 var callDirectionActions = {
@@ -98,140 +97,75 @@ var callDirectionActions = {
 console.log("Domain = "+ document.domain);
 
 var urlAtt = {};
-urlAtt['CallSession'] = 'ParlayREST/thirdpartycall/v1/callSessions?access_token={access_token}';
-urlAtt['CallSessionParticipants'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants';
-urlAtt['CallSessionParty'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants/{partyId}';
-urlAtt['CallSessionCallId'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}';
 
-urlAtt['EventNotification'] = 'event/notification?access_token={access_token}';
-urlAtt['EventNotificationId'] = 'event/notification/{notificationId}?access_token={access_token}';
+urlAtt.EventNotification = 'event/notification?access_token={access_token}';
+urlAtt.EventNotificationId = 'event/notification/{notificationId}?access_token={access_token}';
 
-urlAtt['EventDirection'] = 'event/direction?access_token={access_token}';
-urlAtt['EventDirectionId'] = 'event/direction/{directionId}?access_token={access_token}';
+urlAtt.EventDirection = 'event/direction?access_token={access_token}';
+urlAtt.EventDirectionId = 'event/direction/{directionId}?access_token={access_token}';
 
-urlAtt['PlayCollectSubscription'] = 'ui/playcollect?access_token={access_token}';
-urlAtt['PlayCollectSubscriptionId'] = 'ui/playcollect/{playCollectSubId}?access_token={access_token}';
+urlAtt.PlayCollectSubscription = 'ui/playcollect?access_token={access_token}';
+urlAtt.PlayCollectSubscriptionId = 'ui/playcollect/{playCollectSubId}?access_token={access_token}';
 
-urlAtt['AudioCallMsgText'] = 'ui/text?access_token={access_token}';
-urlAtt['AudioCallMsgAudio'] = 'ui/audio?access_token={access_token}';
-urlAtt['AudioCallMsgVideo'] = 'ui/video?access_token={access_token}';
+urlAtt.AudioCallMsgText = 'ui/text?access_token={access_token}';
+urlAtt.AudioCallMsgAudio = 'ui/audio?access_token={access_token}';
+urlAtt.AudioCallMsgVideo = 'ui/video?access_token={access_token}';
 
-urlAtt['DigitInteractCollection'] = 'ui/playcollect/digit?access_token={access_token}';
-urlAtt['RecordInteractCollection'] = 'ui/playcollect/record?access_token={access_token}';
+urlAtt.DigitInteractCollection = 'ui/playcollect/digit?access_token={access_token}';
+urlAtt.RecordInteractCollection = 'ui/playcollect/record?access_token={access_token}';
 
-
-urlAtt['UserCapabilities'] = 'selfcare/1.0/capabilities/{puid}?access_token={access_token}';
-urlAtt['UserSettings'] = 'selfcare/1.0/settings/{puid}?access_token={access_token}';
-urlAtt['CallLogs'] = 'selfcare/1.0/callLog/{puid}/{pgIdx}/{pgSize}?access_token={access_token}';
-urlAtt['DeleteCallLog'] = 'selfcare/1.0/callLog/{puid}?access_token={access_token}';
-
-var urlOrig = {};
-urlOrig['CallSession'] = 'ParlayREST/thirdpartycall/v1/callSessions';
-urlOrig['CallSessionParticipants'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants';
-urlOrig['CallSessionParty'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}/participants/{partyId}';
-urlOrig['CallSessionCallId'] = 'ParlayREST/thirdpartycall/v1/callSessions/{callId}';
-
-urlOrig['EventNotification'] = '/ParlayREST/callnotification/v1/subscriptions/callEvent?access_token={access_token}';
-urlOrig['EventNotificationId'] = '/ParlayREST/callnotification/v1/subscriptions/callEvent/{notificationId}?access_token={access_token}';
-
-urlOrig['EventDirection'] = '/ParlayREST/callnotification/v1/subscriptions/callDirection?access_token={access_token}';
-urlOrig['EventDirectionId'] = '/ParlayREST/callnotification/v1/subscriptions/callDirection/{directionId}?access_token={access_token}';
-
-urlOrig['PlayCollectSubscription'] = 'ParlayREST/callnotification/v1/subscriptions/collection';
-urlOrig['PlayCollectSubscriptionId'] = 'ParlayREST/callnotification/v1/subscriptions/collection/{playCollectSubId}';
-urlOrig['AudioCallMsgText'] = 'ParlayREST/audiocall/v1/messages/text';
-urlOrig['AudioCallMsgAudio'] = 'ParlayREST/audiocall/v1/messages/audio';
-urlOrig['AudioCallMsgVideo'] = 'ParlayREST/audiocall/v1/messages/video';
-urlOrig['DigitInteractCollection'] = 'ParlayREST/audiocall/v1/interactions/collection';
-urlOrig['RecordInteractCollection'] = 'ParlayREST/audiocall/v1/interactions/collection';
-urlOrig['UserCapabilities'] = 'selfcare/1.0/capabilities/{puid}';
-urlOrig['UserSettings'] = 'selfcare/1.0/settings/{puid}';
-urlOrig['CallLogs'] = 'selfcare/1.0/callLog/{puid}';
-urlOrig['CallLogs'] = 'selfcare/1.0/callLog/{puid}/{pgIdx}/{pgSize}?access_token={access_token}';
-urlOrig['DeleteCallLog'] = 'selfcare/1.0/callLog/{puid}?access_token={access_token}';
-
+urlAtt.CallLogs = 'selfcare/1.0/callLog/{puid}/{pgIdx}/{pgSize}?access_token={access_token}';
+urlAtt.DeleteCallLog = 'selfcare/1.0/callLog/{puid}?access_token={access_token}';
 
 var urlArray = urlAtt;
 
 var jsondata = {};
-jsondata['callMsg'] = '{"callSessionInformation": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"participant": ['
-	+ '{"participantAddress": "{partyA}", "participantName": "Max Muster" },'
-	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ]'
-	+ '}}';
 
-jsondata['callExtMsg'] = '{"callSessionInformation": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"participant": ['
-	+ '{"participantAddress": "{partyA};ext={partyC}", "participantName": "Max Muster" },'
-	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ]'
-	+ '}}';
+jsondata.textMsg = '{' +
+                     '"callSessionId": "{callId}",' +
+                     '"address": "{partyB}",' +
+                     '"mediaURL": "http://{domain}:8080/ApiTest/test1.txt"' +
+                     '}';
 
-jsondata['callAnnouncementMsg'] = '{"callSessionInformation": {'
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"participant": ['
-	+ '{"participantAddress": "{partyA}", "participantName": "Max Muster" },'
-	+ '{"participantAddress": "{partyB}", "participantName": "Peter E. Xample"} ],'
-	+ '"originatorAnnouncement": "http://{domain}:8080/ApiTest/ann1.mp3;messageFormat=Audio"'
-	+ '}}';
+jsondata.audioMsg = '{' +
+					'"callSessionId": "{callId}",' +
+					'"address": "{partyB}",' +
+					'"mediaType": "audio/mpeg",' +
+					'"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3"'+
+					'}';
 
-jsondata['addPartyMsg'] = '{"callParticipantInformation": {' 
-	+ '"clientCorrelator": "{ClientCorrelator}",'
-	+ '"participantAddress": "{partyC}", "participantName": "John E. Xample"'
-	+ '}}';
+jsondata.videoMsg = '{' +
+					'"callSessionId": "{callId}",'+
+					'"address": "{partyB}",'+
+					'"mediaType": "video/mp4",'+
+					'"mediaURL": "http://{domain}:8080/ApiTest/video.mp4"'+
+					'}';
 
-jsondata['textMsg'] = 
-	'{'
-	+ '"callSessionId": "{callId}",'
-	+ '"address": "{partyB}",'
-	+ '"mediaURL": "http://{domain}:8080/ApiTest/test1.txt"'
-	+ '}';
+jsondata.collectDigitsMsg = '{' +
+							'"callSessionId": "{callId}",' +
+							'"address": "{partyB}",'+
+							'"mediaType": "audio/mpeg",'+
+							'"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3",'+
+							'"interruptMedia": true,'+ '"maxDigits": 1,'+
+							'"minDigits": 1,'+
+							'"endChar": "*"'+
+							'}';
 
-jsondata['audioMsg'] = 
-	'{'
-	+ '"callSessionId": "{callId}",'
-	+ '"address": "{partyB}",'
-	+ '"mediaType": "audio/mpeg",'
-	+ '"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3"'
-	+ '}';
+jsondata.createPlayCollectSub = '{' +
+								'"callSessionId": "{callId}",' +
+								'"notifyURL":"http://{domain}:8080/playCollect?id={msisdn}"'+
+								'}';
 
-jsondata['videoMsg'] = 
-	'{'
-	+ '"callSessionId": "{callId}",'
-	+ '"address": "{partyB}",'
-	+ '"mediaType": "video/mp4",'
-	+ '"mediaURL": "http://{domain}:8080/ApiTest/video.mp4"'
-	+ '}';
+jsondata.callDirectionMsg = '{ "address": "{partyB}",'+
+							'"notifyURL":"http://{domain}:8080/callDirection?id={msisdn}",'+
+							'"events": [ {criteria} ]'+
+							'}';
 
-jsondata['collectDigitsMsg'] = '{'
-	+ '"callSessionId": "{callId}",'
-	+ '"address": "{partyB}",'
-	+ '"mediaType": "audio/mpeg",'
-	+ '"mediaURL": "http://{domain}:8080/ApiTest/ann1.mp3",'
-	+ '"interruptMedia": "true",'
-	+ '"maxDigits": "1",'
-	+ '"minDigits": "1",'
-	+ '"endChar": "*"'
-	+ '}';
-
-jsondata['createPlayCollectSub'] = 
-	'{'
-	+ '"callSessionId": "{callId}",'
-	+ '"notifyURL":"http://{domain}:8080/playCollect?id={msisdn}"'
-	+ '}';
-
-jsondata['callDirectionMsg'] = '{ "address": "{partyB}",'
-	+ '"notifyURL":"http://{domain}:8080/callDirection?id={msisdn}",'
-	+ '"events": [ {criteria} ]'
-	+ '}';
-
-jsondata['registerMsg'] = '{ "address": "{partyB}",'
-	+ '"notifyURL":"http://{domain}:8080/callEvent?id={msisdn}",'
-	+ '"events": [ {criteria} ],' + '"direction":"{direction}"'
-	+ '}';
-
-
+jsondata.registerMsg ='{ "address": "{partyB}",'+
+						'"notifyURL":"http://{domain}:8080/callEvent?id={msisdn}",'+
+						'"events": [ {criteria} ],' +
+						'"direction":"{direction}"'+
+						'}';
 
 var msgdata = jsondata;
 
@@ -261,22 +195,22 @@ errorMsg['503'] = "ServerBusy - Service Unavailable: The server is currently una
 
 
 function tabSelected(index) {
-	if (index < 0) return;
-	tabIndex = index;
-	replyName = "reply"+index;
-	queryName = "query"+index;
-	reqBodyName = "reqBody"+index;
-	postButton = "postButton"+index;
-	getButton = "getButton"+index;
-	delButton = "delButton"+index;
-	partyAdivtext = "partyAdivtext"+index;
-	partyBdivtext = "partyBdivtext"+index;
-	partyCdivtext = "partyCdivtext"+index;
-	partyA = "partyA"+index;
-	partyB = "partyB"+index;
-	partyC = "partyC"+index;
-	events = "events"+index;
-	cmdLayout = "cmdLayout"+index;
+	if (index === 0)  { return; }
+	tabIndex = index-1;
+	replyName = "reply"+tabIndex;
+	queryName = "query"+tabIndex;
+	reqBodyName = "reqBody"+tabIndex;
+	postButton = "postButton"+tabIndex;
+	getButton = "getButton"+tabIndex;
+	delButton = "delButton"+tabIndex;
+	partyAdivtext = "partyAdivtext"+tabIndex;
+	partyBdivtext = "partyBdivtext"+tabIndex;
+	partyCdivtext = "partyCdivtext"+tabIndex;
+	partyA = "partyA"+tabIndex;
+	partyB = "partyB"+tabIndex;
+	partyC = "partyC"+tabIndex;
+	events = "events"+tabIndex;
+	cmdLayout = "cmdLayout"+tabIndex;
 	if (tabCmdSelected[tabIndex] !== undefined) {
 		changeTemplate(tabCmdSelected[tabIndex].e, tabCmdSelected[tabIndex].cmd, tabCmdSelected[tabIndex].key);
 	}
@@ -288,72 +222,14 @@ function getOAuthUrl() {
 
 	var scope = 'alutest';
 	var redirectURI = "http://"+document.domain+":8080/ApiTest/index.html";
-	return oauth_server + authorize_path + "?response_type=token&client_id=" +
-	serverData.clientID + "&scope=" + scope + "&redirect_uri=" + redirectURI;
+	return oauth_server + authorize_path + "?response_type=token&client_id=" + serverData.clientID + "&scope=" + scope + "&redirect_uri=" + redirectURI;
 }
-
-function init()
-{
-	console.log("In Init");
-	var oauthParams = {};
-	var queryString = window.parent.location.hash.substring(1);
-	var regex =/([^&=]+)=([^&]*)/g;
-	var m;
-	var html = '';
-	//console.log(queryString);
-	while (m = regex.exec(queryString)) {
-		oauthParams[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-	}
-	console.log(oauthParams);
-	access_token = oauthParams['access_token'];
-	console.log("access_token = "+access_token);
-	$.getJSON( "config.json", function( data ) {
-		if (data.server != undefined) {
-			serverData.server = data.server;
-		}
-		if (data.clientID != undefined) {
-			serverData.clientID = data.clientID;
-		}
-		console.log("server = "+serverData.server);
-		console.log("clientID = "+serverData.clientID);
-
-		if (access_token === undefined) {
-			window.location.href = getOAuthUrl();  // Go to ApiMatrix to get access_token
-		} else {
-			$('#tt').tabs({
-				onSelect: function(title,index){
-					index = index-1;
-					console.log("Select tab:"+index);
-					tabSelected(index);
-				}
-			});
-			serverLog = document.getElementById("serverLog");
-			loadParties();
-			loadSubscriptions();
-			pollLogs();
-			updateSubscriptionTable();
-			updateSessionTable();
-			tabSelected(0);
-			changeTemplateVector[0] = changeTemplatePRS;
-			changeTemplateVector[1] = changeTemplatePRS;
-			changeTemplateVector[2] = changeTemplatePRS;
-			changeTemplateVector[3] = changeTemplatePRS;
-			changeTemplateVector[4] = changeTemplatePCM;
-			changeTemplateVector[5] = changeTemplatePCM;
-		}
-	});
-
-
-	$("#cmdLayout0").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
-
-}
-
-
 
 function sendMsg(method) {
 	document.getElementById(replyName).value = "";
-	var cmd = document.getElementById(queryName).value;
 	var data = document.getElementById(reqBodyName).value;
+	var cmd = document.getElementById(queryName).value;
+	
 	currentMethod = method;
 	var contentType = "application/json";
 
@@ -391,53 +267,68 @@ function save(key,value)
 
 function loadParties() {
 	if (load("partyA") !== null) {
+		/*
 		document.getElementById("partyA0").value = load("partyA");
 		document.getElementById("partyA1").value = load("partyA");
 		document.getElementById("partyA2").value = load("partyA");
 		document.getElementById("partyA3").value = load("partyA");
 		document.getElementById("partyA4").value = load("partyA");
 		document.getElementById("partyA5").value = load("partyA");
+		*/
 
 	}
 	if(load("partyB") !== null) {
+		/*
 		document.getElementById("partyB0").value = load("partyB");
 		document.getElementById("partyB1").value = load("partyB");
 		document.getElementById("partyB2").value = load("partyB");
 		document.getElementById("partyB3").value = load("partyB");
+		*/
 	}
 	if(load("partyC") !== null) {
+		/*
 		document.getElementById("partyC0").value = load("partyC");
 		document.getElementById("partyC1").value = load("partyC");
 		document.getElementById("partyC2").value = load("partyC");
 		document.getElementById("partyC3").value = load("partyC");
+		*/
 	}
 }
 
 function saveParties() {
+	/*
 	var partyAval = document.getElementById("partyA"+tabIndex).value;
 	var partyBval = document.getElementById("partyB"+tabIndex).value;
 	var partyCval = document.getElementById("partyC"+tabIndex).value;
 	save("partyA",partyAval);
 	save("partyB",partyBval);
 	save("partyC",partyCval);
+	*/
 }
 
 function loadSubscriptions() {
-	if(load("callNotifId") != null)
+	if(load("callNotifId") !== null) {
 		lastNotification = load("callNotifId");
-	if(load("callDirectionId") != null)
+	}
+	if(load("callDirectionId") !== null) {
 		lastDirection = load("callDirectionId");
-	if(load("digitCollectionId") != null)
+	}
+	if(load("digitCollectionId") !== null) {
 		lastDigitCollection = load("digitCollectionId");
-	if(load("callSessionId") != null)
+	}
+	if(load("callSessionId") !== null) {
 		lastCall = load("callSessionId");
+	}
 	console.log("loaded call session:"+lastCall);
-	if (lastNotification == undefined)
+	if (lastNotification === undefined) {
 		lastNotification = "";
-	if (lastDirection == undefined)
+	}
+	if (lastDirection === undefined) {
 		lastDirection = "";
-	if (lastCall == undefined)
+	}
+	if (lastCall === undefined) {
 		lastCall = "";
+	}
 	// Not sure what to do if Ids are no longer valid
 	save("callNotifId","");
 	save("callDirectionId","");
@@ -489,13 +380,16 @@ function hideShowParty(id)
 	var template = msgdata[currentTemplate];
 	if(template)
 	{
-		if(template.indexOf(id) >=0)
+		if(template.indexOf(id) >=0) {
 			document.getElementById(id+"div"+tabIndex).style.display="inline";
-		else
+		}
+		else {
 			document.getElementById(id+"div"+tabIndex).style.display="none";
+		}
 	}
-	else
+	else {
 		document.getElementById(id+"div"+tabIndex).style.display="none";
+	}
 }
 
 function changeTemplatePRS(e, cmd,key)
@@ -510,22 +404,22 @@ function changeTemplatePRS(e, cmd,key)
 
 	document.getElementById(postButton).disabled = true;
 	document.getElementById(getButton).disabled = true;
-	document.getElementById(delButton).disabled = true;		
+	document.getElementById(delButton).disabled = true;
 
 	switch (key) {
 	case 'get':
 		currentTemplate = "";
 		document.getElementById(getButton).disabled = false;
 		document.getElementById(reqBodyName).value = "";
-		if (document.getElementById(events) != null) {
+		if (document.getElementById(events) !== null) {
 			document.getElementById(events).style.display = "none";
 		}
 		break;
 	case  'delete':
 		currentTemplate = "";
-		document.getElementById(delButton).disabled = false;		
+		document.getElementById(delButton).disabled = false;
 		document.getElementById(reqBodyName).value = "";
-		if (document.getElementById(events) != null) {
+		if (document.getElementById(events) !== null) {
 			document.getElementById(events).style.display = "none";
 		}
 		break;
@@ -534,7 +428,7 @@ function changeTemplatePRS(e, cmd,key)
 	currentTemplate = key;
 	updateTemplate();
 	genClientCorrelator();
-	if (document.getElementById(events) != null) {
+	if (document.getElementById(events) !== null) {
 		document.getElementById(events).style.display = "inline";
 	}
 	}
@@ -559,26 +453,34 @@ function changeTemplatePCM(e, cmd,key)
 
 	document.getElementById(postButton).disabled = true;
 	document.getElementById(getButton).disabled = true;
-	document.getElementById(delButton).disabled = true;		
+	document.getElementById(delButton).disabled = true;
 
 	switch (key) {
 	case 'get':
 		currentTemplate = "";
 		document.getElementById(getButton).disabled = false;
-		if (document.getElementById(reqBodyName) !=undefined)
+		if (document.getElementById(reqBodyName) !== undefined) {
 			document.getElementById(reqBodyName).value = "";
+		}
 		$('#'+cmdLayout).layout('collapse','west');
 		document.getElementById("pageIdxDiv").style.display="inline";
 		document.getElementById("pageSizeDiv").style.display="inline";
+		document.getElementById("startTimeDiv").style.display="inline";
+		document.getElementById("endTimeDiv").style.display="inline";
+		document.getElementById("callTypeDiv").style.display="inline";
+
 		break;
 	case  'delete':
 		currentTemplate = "";
 		document.getElementById(delButton).disabled = false;
-		if (document.getElementById(reqBodyName) !=undefined)
+		if (document.getElementById(reqBodyName) !== undefined) {
 			document.getElementById(reqBodyName).value = "";
+		}
 		$('#'+cmdLayout).layout('collapse','west');
 		document.getElementById("pageIdxDiv").style.display="none";
 		document.getElementById("pageSizeDiv").style.display="none";
+		document.getElementById("startTimeDiv").style.display="none";
+		document.getElementById("endTimeDiv").style.display="none";
 		break;
 	default:
 		$('#'+cmdLayout).layout('expand','west');
@@ -591,6 +493,9 @@ function changeTemplatePCM(e, cmd,key)
 
 	}
 	document.getElementById("partyAdiv"+tabIndex).style.display="inline";
+	document.getElementById("partyBdiv"+tabIndex).style.display="inline";
+	document.getElementById("partyCdiv"+tabIndex).style.display="inline";
+
 	currentCmd = urlArray[cmd];
 	updateCommand();
 }
@@ -699,6 +604,7 @@ function genClientCorrelator() {
 
 function updateCommand()
 {
+	console.log("In updateCommand");
 	puid = document.getElementById(partyA).value;
 	pageSize = document.getElementById("pageSize").value;
 	pageIndex = document.getElementById("pageIdx").value;
@@ -805,11 +711,9 @@ function onReply(xhr, status) {
 		}
 		communicationSettings = "";
 		updateSubscriptionTable();
-		updateSessionTable();
 		updateCommand();
 	} else {
 		updateSubscriptionTable();
-		updateSessionTable();
 	}
 }
 
@@ -834,127 +738,6 @@ function processJson(body) {
 	}
 }
 
-function processXml(xml)
-{	
-	//
-	// The resourceURL can show up for the call and for the participants.  We only want the for the call
-	//
-	var resource = null;
-	var top = xml.children();
-	if (top) {
-		resource = top.children("resourceURL");
-	}
-	// If not at the top, look down through the tree
-	if((resource != null) && (resource.length <=0)) {
-		resource = xml.find("resourceURL");
-	}
-	if(resource.length <=0) return;
-
-	var msgType = xml.find("callSessionInformation");
-	if(msgType.length >0)
-	{
-		var index = 0;
-
-		var sessionId = resource.eq(resource.length-1).text().split('callSessions/');
-		lastCall = sessionId[1];
-		party = [];
-		$(xml).find('participant').each(function(){
-			var participantAddress = $(this).find('participantAddress').text();
-			var participantStatus = $(this).find('participantStatus').text();
-			//var duration = $(this).find('duration').text();
-			var resourceURL = $(this).find('resourceURL').text();
-			var token = resourceURL.split('participants/');
-			var item = {};
-			item.id = token[1];
-			item.party = participantAddress;
-			item.status = participantStatus;
-			party[index++] = item;
-			if (index == 1) {
-				partyId = item.id;
-				console.log("Set partyId: "+ partyId);
-			}
-		});
-	}
-
-	msgType = xml.find("callParticipantList");
-	if(msgType.length >0)
-	{
-		var index = 0;
-
-		var sessionId = resource.eq(resource.length-1).text().split('callSessions/');
-		lastCall = sessionId[1];
-		var token = lastCall.split('/');
-		lastCall = token[0];
-		party = [];
-		$(xml).find('participant').each(function(){
-			var participantAddress = $(this).find('participantAddress').text();
-			var participantStatus = $(this).find('participantStatus').text();
-			//var duration = $(this).find('duration').text();
-			var resourceURL = $(this).find('resourceURL').text();
-			var token = resourceURL.split('participants/');
-			var item = {};
-			item.id = token[1];
-			item.party = participantAddress;
-			item.status = participantStatus;
-			party[index++] = item;
-			if (index == 1) {
-				partyId = item.id;
-				console.log("Set partyId: "+ partyId);
-			}
-		});
-	}
-	msgType = xml.find("callParticipantInformation");
-	if(msgType.length >0)
-	{
-		var index = party.length;
-		var participantAddress = xml.find('participantAddress').text();
-		var participantStatus = xml.find('participantStatus').text();
-		//var duration = $(this).find('duration').text();
-		var resourceURL = xml.find('resourceURL').text();
-		var token = resourceURL.split('participants/');
-		var item = {};
-		item.id = token[1];
-		item.party = participantAddress;
-		item.status = participantStatus;
-		for(var i = 0;i<party.length;i++)
-		{
-			if (party[i].id == item.id) 
-			{
-				index = i;
-				break;
-			}
-		}
-		party[index++] = item;
-		if (index == 1) {
-			partyId = item.id;
-		}
-	}
-
-	msgType = xml.find("callEventSubscription");
-	if(msgType.length >0)
-	{
-		var token = resource.eq(0).text().split('callEvent/');
-		if (token[1] != undefined)
-			lastNotification = token[1];
-	}
-
-	msgType = xml.find("callDirectionSubscription");
-	if(msgType.length >0)
-	{
-		var token = resource.eq(0).text().split('callDirection/');
-		if (token[1] != undefined)
-			lastDirection = token[1];
-	}	
-
-	msgType = xml.find("playAndCollectInteractionSubscription");
-	if(msgType.length >0)
-	{
-		var token = resource.eq(0).text().split('collection/');
-		if (token[1] != undefined)
-			lastDigitCollection = token[1];
-	}	
-
-}
 
 function updateSubscriptionTable()
 {
@@ -964,39 +747,10 @@ function updateSubscriptionTable()
 	saveSubscriptions();
 }
 
-function selectParticipant(id) {
-	partyId = id;
-	updateCommand();
-}
 
-function updateSessionTable()
-{
-	var e = document.getElementById('participantsTable');
-	if (lastCall.length == 0) {
-		var list ="<br><table class=\"center\">";
-		list+="</table>";
-		e.innerHTML = list;
-		document.getElementById('callSessionText').value = '';
-		document.getElementById('uiCallSession').value = '';
-		return;
-	}
-	document.getElementById('callSessionText').value = lastCall;
-	document.getElementById('uiCallSession').value = lastCall;
-	var list ="<br><table class=\"center\">";
-	if (party.length > 0) {
-		list+="<thead><tr><th>Address</th><th>Status</th><th>Id</th></tr></thead>";
-		list+="<tbody>";
-		for(var i = 0;i<party.length;i++)
-		{
-			var item = party[i];
-			list+='<tr><td>'+item.party+'</td><td>'+item.status+'</td><td><a class="linkitem" href=# onClick="selectParticipant('+item.id+')">'+item.id+'</a></td></tr>';
-		}
-		list+="</tbody>";
-	}
-	list+="</table>";
-	e.innerHTML = list;
+function callTypeChanged() {
+	console.log("In callTypeChanged");
 }
-
 
 function actionChange() {
 	console.log("In actionChange");
@@ -1096,4 +850,68 @@ function setSelection(el, begin, end) {
 		range.moveStart('character', begin);
 		range.select();
 	}
+}
+
+function init()
+{
+	console.log("In Init");
+	var oauthParams = {};
+	var queryString = window.parent.location.hash.substring(1);
+	var regex =/([^&=]+)=([^&]*)/g;
+	var m;
+	var html = '';
+	//console.log(queryString);
+	while (m = regex.exec(queryString)) {
+		oauthParams[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+	}
+	console.log(oauthParams);
+	access_token = oauthParams.access_token;
+	console.log("access_token = "+access_token);
+	$.getJSON( "config.json", function( data ) {
+		if (data.server !== undefined) {
+			serverData.server = data.server;
+		}
+		if (data.clientID !== undefined) {
+			serverData.clientID = data.clientID;
+		}
+		console.log("server = "+serverData.server);
+		console.log("clientID = "+serverData.clientID);
+
+		if (access_token === undefined) {
+			window.location.href = getOAuthUrl();  // Go to ApiMatrix to get access_token
+		} else {
+			$('#tt').tabs({
+				onSelect: function(title,index){
+					console.log("Select tab:"+index);
+					tabSelected(index);
+				}
+			});
+			$('#endDateTime').datetimebox({
+				onChange: function(date){
+					updateCommand();
+				}
+			});
+			$('#startDateTime').datetimebox({
+				onChange: function(date){
+					updateCommand();
+				}
+			});
+			serverLog = document.getElementById("serverLog");
+			loadParties();
+			loadSubscriptions();
+			pollLogs();
+			updateSubscriptionTable();
+			tabSelected(0);
+			changeTemplateVector[0] = changeTemplatePRS;
+			changeTemplateVector[1] = changeTemplatePRS;
+			changeTemplateVector[2] = changeTemplatePRS;
+			changeTemplateVector[3] = changeTemplatePCM;
+			//changeTemplateVector[4] = changeTemplatePCM;
+			//changeTemplateVector[5] = changeTemplatePCM;
+		}
+	});
+
+
+	$("#cmdLayout0").layout('panel','center').panel({tools:[{ iconCls:'icon-no', handler:function(){clearLogs();}}]});
+
 }
